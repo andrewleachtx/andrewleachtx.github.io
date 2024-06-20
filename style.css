@@ -1,0 +1,300 @@
+/* GENERAL */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap");
+
+/* Reset everything so we can align ourself */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+p {
+  color: rgb(85, 85, 85);
+}
+
+/* COLORS */
+:root {
+  --purple_: #bbb2e9;
+  --charcoal_: rgb(53, 53, 53);
+}
+
+/* TRANSITION */
+
+a,
+.btn {
+  transition: all 0.35s ease-in-out;
+}
+
+/* DESKTOP NAV */
+
+nav,
+.nav-links {
+  display: flex;
+}
+
+nav {
+  justify-content: space-around;
+  align-items: center;
+  height: 17.5vh;
+}
+
+.nav-links {
+  gap: 2rem;
+  /* Remove bullet points */
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+a {
+  color: black;
+  /* Gets rid of underline from hrefs so we can customize later */
+  text-decoration: none;
+  text-decoration-color: white;
+}
+
+/* Custom hover for hrefs */
+a:hover {
+  color: gray;
+  text-decoration: underline;
+  text-underline-offset: 0.75rem;
+  text-decoration-color: rgb(181, 181, 181);
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.logo:hover {
+  cursor: default;
+}
+
+/* HAMBURGER MENU */
+#hamburger-nav {
+  display: none;
+}
+
+.hamburger-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 24px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.hamburger-icon span {
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-links {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  width: fit-content;
+  max-height: 0;
+  overflow: hidden;
+  /* transition: all 0.5s ease-in-out; */
+}
+
+.menu-links a {
+  display: block;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: black;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-links li {
+  list-style: none;
+}
+
+/* Increases our height from 0 (none) to something to view list */
+.menu-links.open {
+  max-height: 300px;
+}
+
+/*
+  When the hamburger icon is clicked or "opened" is toggled, we should
+    1) Rotate the first line down right, shift a bit
+    2) Effectively remove the second line
+    3) Rotate the third line up left, shift a bit
+
+  I have added a transition effect to the children as well.
+*/
+.hamburger-icon.open span:first-child {
+  /* Note +x, +y is right, down */
+  transform: rotate(45deg) translate(10px, 5px);
+  transition: all 0.4s ease-in-out;
+}
+
+.hamburger-icon.open span:nth-child(2) {
+  opacity: 0;
+  transform: translate(100px, 0);
+  transition: all 0.4s ease-in-out;
+}
+
+.hamburger-icon.open span:last-child {
+  transform: rotate(-45deg) translate(10px, -5px);
+  transition: all 0.6s ease-in-out;
+}
+
+/* Could refactor to span:first-child, span:last-child */
+.hamburger-icon span:first-child {
+  transform: none;
+  transition: all 0.4s ease-in-out;
+}
+
+.hamburger-icon span:nth-child(2) {
+  opacity: 1;
+  transition: all 0.6s ease-in-out;
+}
+
+.hamburger-icon span:last-child {
+  transform: none;
+  transition: all 0.4s ease-in-out;
+}
+
+/* SECTIONS */
+
+section {
+  padding-top: 4vh;
+  height: 96vh;
+  margin: 0 10rem;
+  box-sizing: border-box;
+  min-height: fit-content;
+}
+
+/* Could be .section-container, #profile but readable */
+.section-container {
+  display: flex;
+}
+
+/* PROFILE SECTION */
+
+#profile {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  height: 80vh;
+}
+
+.section__pic-container {
+  display: flex;
+  height: 400px;
+  width: 400px;
+  margin: auto 0;
+}
+
+.section__pic-img {
+  border-radius: 50%;
+}
+
+.section__text {
+  align-self: center;
+  text-align: center;
+}
+
+.section__text p {
+  font-weight: 600;
+}
+
+.section__text__p1 {
+  text-align: center;
+}
+
+.section__text__p2 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 3rem;
+  text-align: center;
+}
+
+#socials-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+/* ICONS */
+
+.icon {
+  cursor: pointer;
+  height: 2rem;
+}
+
+/* BUTTONS */
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 1rem;
+  width: 8rem;
+  border-radius: 2rem;
+}
+
+/* Both should have a black border */
+.btn-color-1,
+.btn-color-2 {
+  border: var(--charcoal_) 0.1rem solid;
+}
+
+.btn-color-1:hover,
+.btn-color-2:hover {
+  cursor: pointer;
+}
+
+/* 
+  Button 1 (right) should be charcoal w/ white text
+  Button 2 (left) should be white, charcoal on hover
+*/
+.btn-color-1,
+.btn-color-2:hover {
+  background: var(--charcoal_);
+  color: white;
+}
+
+.btn-color-1:hover {
+  background: white;
+  color: var(--charcoal);
+}
+
+.btn-color-2 {
+  background: none;
+}
+
+.btn-color-2:hover {
+  border: white 0.1rem solid;
+}
+
+.btn-container {
+  gap: 1rem;
+}
