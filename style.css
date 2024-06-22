@@ -33,6 +33,16 @@ a,
   transition: all 0.35s ease-in-out;
 }
 
+/* WIP HEADER */
+#wip-nav {
+  /* display: flex; */
+  background-color: var(--purple_);
+  max-height: 3vh;
+  min-width: 100vw;
+  position: absolute;
+  bottom: 0;
+}
+
 /* DESKTOP NAV */
 
 nav,
