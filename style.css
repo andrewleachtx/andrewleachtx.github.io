@@ -27,19 +27,18 @@ p {
 }
 
 /* TRANSITION */
-
 a,
 .btn {
-  transition: all 0.35s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 /* WIP HEADER */
 #wip-nav {
-  /* display: flex; */
+  display: flex;
   background-color: var(--purple_);
   max-height: 3vh;
   min-width: 100vw;
-  position: absolute;
+  position: fixed;
   bottom: 0;
 }
 
@@ -57,7 +56,7 @@ nav {
 }
 
 .nav-links {
-  gap: 2rem;
+  gap: 1.3rem;
   /* Remove bullet points */
   list-style: none;
   font-size: 1.5rem;
@@ -68,14 +67,16 @@ a {
   /* Gets rid of underline from hrefs so we can customize later */
   text-decoration: none;
   text-decoration-color: white;
+
+  transition: all 0.2s ease-in-out;
 }
 
 /* Custom hover for hrefs */
 a:hover {
-  color: gray;
+  color: var(--purple_);
   text-decoration: underline;
-  text-underline-offset: 0.75rem;
-  text-decoration-color: rgb(181, 181, 181);
+  text-underline-offset: 0.45rem;
+  text-decoration-color: var(--purple_);
 }
 
 .logo {
@@ -205,6 +206,7 @@ section {
   justify-content: center;
   gap: 5rem;
   height: 80vh;
+  cursor: default;
 }
 
 .section__pic-container {
@@ -253,6 +255,12 @@ section {
 .icon {
   cursor: pointer;
   height: 2rem;
+  transition: all 0.15s ease;
+}
+
+.icon:hover {
+  transform: scale(1.15);
+  transition: all 0.15s ease;
 }
 
 /* BUTTONS */
@@ -307,4 +315,57 @@ section {
 
 .btn-container {
   gap: 1rem;
+}
+
+/* ABOUT SECTION */
+
+#about {
+  position: relative;
+}
+
+.about-containers {
+  gap: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.about-details-container {
+  justify-content: center;
+  flex-direction: column;
+}
+
+.about-containers,
+.about-details-container {
+  display: flex;
+}
+
+.about-pic {
+  border-radius: 2rem;
+}
+
+.arrow {
+  position: absolute;
+  right: -5rem;
+  bottom: 2.5rem;
+}
+
+.details-container {
+  padding: 1.5rem;
+  flex: 1;
+  background: white;
+  border-radius: 2rem;
+  border: rgb(53, 53, 53) 0.1rem solid;
+  border-color: rgb(163, 163, 163);
+  text-align: center;
+}
+
+.section-container {
+  gap: 4rem;
+  height: 80%;
+}
+
+.section__pic-container {
+  height: 400px;
+  width: 400px;
+  margin: auto 0;
 }

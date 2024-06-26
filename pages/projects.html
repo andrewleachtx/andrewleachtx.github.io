@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Portfolio</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../mediaqueries.css" />
+  </head>
+
+  <body>
+    <html>
+      <nav id="wip-nav">
+        <p class="section__text">
+          👷‍♂️ I'm still working on the page! Some hyperlinks may not point
+          anywhere yet.
+        </p>
+      </nav>
+
+      <nav id="desktop-nav">
+        <div class="logo">Andrew D. Leach</div>
+
+        <div>
+          <ul class="nav-links">
+            <li>
+              <a href="../">
+                <img src="../assets/home.svg" alt="home icon" class="icon" />
+              </a>
+            </li>
+            <li><a href="../#about">me</a></li>
+            <li><a href="./experience.html">experience</a></li>
+            <li><a href="./projects.html">projects</a></li>
+            <li><a href="./fun.html">fun</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <nav id="hamburger-nav">
+        <div class="logo">Andrew D. Leach</div>
+        <div class="hamburger-menu">
+          <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="menu-links">
+            <li><a href="../#about" onclick="toggleMenu()">about</a></li>
+            <li>
+              <a href="../experience.html" onclick="toggleMenu()">experience</a>
+            </li>
+            <li>
+              <a href="./projects.html" onclick="toggleMenu()">projects</a>
+            </li>
+            <li><a href="./fun.html" onclick="toggleMenu()">fun</a></li>
+          </div>
+        </div>
+      </nav>
+
+      <script src="../script.js" async defer></script>
+    </html>
+  </body>
+</html>
