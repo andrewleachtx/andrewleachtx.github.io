@@ -39,6 +39,7 @@ a,
   max-height: 3vh;
   min-width: 100vw;
   position: fixed;
+  z-index: 1000;
   bottom: 0;
 }
 
@@ -252,6 +253,26 @@ section {
 
 /* ICONS */
 
+.inline-content {
+  display: inline-flex;
+  align-items: center;
+}
+
+.icon-small {
+  height: 2rem;
+}
+
+.icon-small-grow {
+  cursor: pointer;
+  height: 2rem;
+  transition: all 0.15s ease;
+}
+
+.icon-small-grow:hover {
+  transform: scale(1.15);
+  transition: all 0.15s ease;
+}
+
 .icon {
   height: 2rem;
 }
@@ -262,7 +283,7 @@ section {
   transition: all 0.15s ease;
 }
 
-.icon:hover {
+.icon-grow:hover {
   transform: scale(1.15);
   transition: all 0.15s ease;
 }
