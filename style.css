@@ -466,28 +466,28 @@ article .icon {
   justify-content: center;
   font-weight: bold;
   transition: all 0.3s ease;
+  width: max-content;
+  cursor: default;
 }
 
 .heat-level:hover {
   flex: 1.5;
 }
 
-.basic {
-  background-color: rgb(206, 205, 205);
-  color: black;
+/* Make sure background color is only the text */
+.article-container h3 {
+  display: text-block;
+  width: max-content;
 }
 
-.intermediate {
-  background-color: rgb(145, 145, 145);
-  color: black;
+.new {
+  background-color: #46d339;
 }
 
-.advanced {
-  background-color: rgb(78, 78, 78);
-  color: white;
+.warm {
+  background-color: #ffa500;
 }
 
-.fluent {
-  background-color: black;
-  color: white;
+.comfortable {
+  background-color: var(--purple_);
 }
