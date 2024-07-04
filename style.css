@@ -259,12 +259,13 @@ section {
 }
 
 .icon-small {
-  height: 2rem;
+  height: 1.6rem;
 }
 
 .icon-small-grow {
   cursor: pointer;
-  height: 2rem;
+  height: 1.3rem;
+  margin-right: 0.6rem;
   transition: all 0.15s ease;
 }
 
@@ -363,7 +364,6 @@ section {
 .about-details-container {
   display: flex;
   min-width: 70%; /* REMOVE THIS AFTER ADDING TEXT */
-
 }
 
 .about-pic {
@@ -395,4 +395,12 @@ section {
   height: 400px;
   width: 400px;
   margin: auto 0;
+}
+
+.text-container p {
+  margin-bottom: 0.5rem;
+}
+
+.text-container p:last-child {
+  margin-bottom: 0;
 }
