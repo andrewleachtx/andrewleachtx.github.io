@@ -369,7 +369,6 @@ section {
 .about-pic {
   border-radius: 2rem;
   height: 110%;
-  width: 110%;
 }
 
 .arrow {
@@ -465,7 +464,6 @@ article .icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgb(245, 240, 240);
   font-weight: bold;
   transition: all 0.3s ease;
 }
@@ -475,17 +473,21 @@ article .icon {
 }
 
 .basic {
-  background-color: #46d339;
+  background-color: rgb(206, 205, 205);
+  color: black;
 }
 
 .intermediate {
-  background-color: #42b8f5;
+  background-color: rgb(145, 145, 145);
+  color: black;
 }
 
 .advanced {
-  background-color: #fcac4b;
+  background-color: rgb(78, 78, 78);
+  color: white;
 }
 
 .fluent {
-  background-color: #e22424;
+  background-color: black;
+  color: white;
 }
