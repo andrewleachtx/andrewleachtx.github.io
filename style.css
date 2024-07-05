@@ -530,16 +530,12 @@ article .icon {
   position: relative;
 }
 
-#projects :first-child {
-  margin-top: 2rem;
-}
-
 .projects-container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 800px;
-  margin: 0 auto;
+  width: 850px;
+  margin: 4rem auto;
 }
 
 .project-card {
@@ -566,11 +562,13 @@ article .icon {
 }
 
 .project-image {
-  width: 30%;
-  height: 20vh;
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 5px;
   margin-right: 1rem;
+  padding: 0.5rem;
+  border-radius: 25px;
 }
 
 .project-details {
