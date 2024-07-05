@@ -8,7 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Borrowed -->
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
 
     <link rel="stylesheet" href="./style.css" />
     <link rel="stylesheet" href="./mediaqueries.css" />
@@ -38,6 +42,7 @@
             </li>
             <li><a href="./#about">me</a></li>
             <li><a href="./#experience">experience</a></li>
+            <li><a href="./#contact">contact</a></li>
             <li><a href="./pages/projects.html">projects</a></li>
             <li><a href="./pages/fun.html">fun</a></li>
           </ul>
@@ -65,6 +70,9 @@
             <li><a href="#about" onclick="toggleMenu()">me</a></li>
             <li>
               <a href="./#experience" onclick="toggleMenu()">experience</a>
+            </li>
+            <li>
+              <a href="./#contact" onclick="toggleMenu()">contact</a>
             </li>
             <li>
               <a href="./pages/projects.html" onclick="toggleMenu()"
@@ -521,6 +529,61 @@
           </div>
         </div>
       </section>
+
+      <section id="contact">
+        <h1 class="title">Contact Me</h1>
+        <div class="contact-info-upper-container">
+          <a class="clickable" href="mailto:andrewleach38@gmail.com">
+            <div class="contact-info-container">
+              <img
+                src="./assets/icon-email.png"
+                alt="Email Icon"
+                class="email-icon"
+              />
+              <p>andrewleach38@gmail.com</p>
+            </div>
+          </a>
+
+          <a
+            class="clickable"
+            href="https://linkedin.com/in/andrewleachtx"
+            target="_blank"
+          >
+            <div class="contact-info-container">
+              <img
+                src="./assets/icon-linkedin.svg"
+                alt="Linkedin Profile"
+                class="icon-grow"
+              />
+              <p>LinkedIn</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <footer>
+        <nav>
+          <div class="nav-links-container">
+            <ul class="nav-links">
+              <li>
+                <a href="../">
+                  <img
+                    src="../assets/icon-home.svg"
+                    alt="home icon"
+                    class="icon-grow"
+                  />
+                </a>
+              </li>
+              <li><a href="./#about">me</a></li>
+              <li><a href="./#experience">experience</a></li>
+              <li><a href="./#contact">contact</a></li>
+              <li><a href="./pages/projects.html">projects</a></li>
+              <li><a href="./pages/fun.html">fun</a></li>
+            </ul>
+          </div>
+        </nav>
+        <p>&#169; 2024 Andrew Leach. All Rights Reserved.</p>
+      </footer>
 
       <script src="script.js" async defer></script>
     </html>
