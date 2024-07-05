@@ -520,6 +520,10 @@ article .icon {
   position: relative;
 }
 
+#projects :first-child {
+  margin-top: 2rem;
+}
+
 .projects-container {
   display: flex;
   flex-direction: column;
@@ -575,7 +579,7 @@ article .icon {
   font-size: 1.85rem;
 }
 
-.project-date {
+.project-date, .project-timeframe {
   font-size: 1.2rem;
   color: var(--charcoal_);
 }
