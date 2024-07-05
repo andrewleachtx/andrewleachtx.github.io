@@ -558,17 +558,17 @@ article .icon {
   padding: 1rem;
   text-decoration: none;
   color: var(--charcoal_);
-  height: 20vh;
+  height: 100%;
 }
 
 .project-image {
-  width: 200px;
   height: 200px;
+  width: 200px;
   object-fit: cover;
-  border-radius: 5px;
   margin-right: 1rem;
   padding: 0.5rem;
-  border-radius: 25px;
+  border-radius: 14px;
+  flex-shrink: 0;
 }
 
 .project-details {
@@ -576,11 +576,6 @@ article .icon {
   flex-direction: column;
   gap: 0.5rem;
   height: 100%;
-}
-
-.project-details :last-child {
-  margin-top: auto;
-  margin-bottom: 0.5rem;
 }
 
 .project-title {
@@ -595,6 +590,8 @@ article .icon {
 .project-desc {
   font-size: 1rem;
   color: #666;
+  margin-top: auto;
+  margin-bottom: 0.5rem;
 }
 
 /* CONTACT INFO */
