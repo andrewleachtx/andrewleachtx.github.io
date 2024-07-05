@@ -6,3 +6,11 @@ function toggleMenu() {
   menu.classList.toggle("open");
   icon.classList.toggle("open");
 }
+
+window.onload = function () {
+  Particles.init({
+    selector: ".background",
+    color: "#bbb2e9",
+    connectParticles: true,
+  });
+};

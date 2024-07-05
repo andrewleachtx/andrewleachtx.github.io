@@ -12,7 +12,7 @@ const projects = [
     date: "June 2024",
     timeframe: "Ongoing",
     image: "../assets/site.png",
-    link: "../index.html",
+    link: "https://github.com/andrewleachtx/andrewleachtx.github.io",
     desc: "This website - built on native HTML, CSS, and JavaScript.",
   },
   {
@@ -45,7 +45,7 @@ function genProjects() {
 
     proj_ele.classList.add("project-card");
     proj_ele.innerHTML = `
-        <a href="${proj.link}">
+        <a href="${proj.link}" target="_blank">
             <img class="project-image" alt="${proj.title} Image" src="${proj.image}" />
             <div class="project-details">
                 <h3 class="project-title">${proj.title}</h3>

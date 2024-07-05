@@ -34,6 +34,16 @@ a,
   transition: all 0.25s ease-in-out;
 }
 
+/* BACKGROUND */
+.background {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 300rem;
+}
+
 /* WIP HEADER */
 #wip-nav {
   display: flex;
