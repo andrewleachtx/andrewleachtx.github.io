@@ -2,12 +2,12 @@ const projects = [
   {
     title: "Ray Tracer",
     date: "April 2024",
-    image: "../projects/raytracer/scene.png",
+    image: "../projects/raytracer/assets/scene.png",
     link: "../projects/raytracer/raytracer.html",
     desc: "Ray tracing engine featuring constructive solid geometry, anti-aliasing, multithreading, and 9 scenes.",
   },
   {
-    title: "TBD.",
+    title: "TBD...",
     date: "January 0000",
     image: "",
     link: "",
