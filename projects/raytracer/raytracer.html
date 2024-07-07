@@ -19,7 +19,11 @@
           <ul class="nav-links">
             <li>
               <a href="../../">
-                <img src="../../assets/icon-home.svg" alt="home icon" class="icon-grow" />
+                <img
+                  src="../../assets/icon-home.svg"
+                  alt="home icon"
+                  class="icon-grow"
+                />
               </a>
             </li>
             <li><a href="../../#about">me</a></li>
@@ -44,15 +48,84 @@
               <a href="../../#experience" onclick="toggleMenu()">experience</a>
             </li>
             <li>
-              <a href="../../pages/projects.html" onclick="toggleMenu()">projects</a>
+              <a href="../../pages/projects.html" onclick="toggleMenu()"
+                >projects</a
+              >
             </li>
-            <li><a href="../../pages/fun.html" onclick="toggleMenu()">fun</a></li>
+            <li>
+              <a href="../../pages/fun.html" onclick="toggleMenu()">fun</a>
+            </li>
           </div>
         </div>
       </nav>
 
-      <h3 class="title">Working on it 😁</h3>
-      <p class="section__text__p1">I want to do this one justice...</p>
+      <div class="project-sidebar">
+        <a href="./raytracer.html">Ray Tracer</a>
+        <a href="#what-is-raytracing">What is Ray Tracing?</a>
+      </div>
+
+      <section id="raytracer" class="project">
+        <h3 class="project-title">Ray Tracer</h3>
+
+        <p class="section__text__p1">
+          Growing up playing video games and fantasizing about one day building
+          my dream computer with only the most outrageously powerful parts, the
+          phrase
+          <a href="https://en.wikipedia.org/wiki/Ray_tracing_(graphics)"
+            >ray tracing</a
+          >
+          was simple: it could make games look <em>real</em> - like you were
+          were looking through a window, not a screen. (It also meant really,
+          really expensive).
+        </p>
+
+        <p class="section__text__p1">
+          After my fortunate introduction to graphics, the way I would now
+          describe ray tracing to my friends is as follows:
+          <strong>you already know how to ray trace</strong>. That is to say, it
+          is the intuitive way to render a scene, replicating what our eyes and
+          brains do on a <a href="">60 times per second?</a> basis.
+        </p>
+
+        <img src="./assets/scene.png" alt="My Scene" class="project-img" />
+
+        <h2 id="what-is-raytracing">What is Ray Tracing?</h2>
+        <p class="section__text__p1">...tbd</p>
+        <h2 id="">It's Really Only 3 Steps (Right?)</h2>
+        <p class="section__text__p1">...tbd</p>
+        <h2>Scenes</h2>
+        <p class="section__text__p1">...tbd</p>
+        <h2>Addons & Optimizations</h2>
+        <p class="section__text__p1">...tbd</p>
+        <h2>Future</h2>
+        <p class="section__text__p1">...tbd</p>
+        <h2>Credits</h2>
+        <p class="section__text__p1">...tbd</p>
+      </section>
+
+      <!-- <footer>
+        <nav>
+          <div class="nav-links-container">
+            <ul class="nav-links">
+              <li>
+                <a href="../../">
+                  <img
+                    src="../../assets/icon-home.svg"
+                    alt="home icon"
+                    class="icon-grow"
+                  />
+                </a>
+              </li>
+              <li><a href="../../#about">me</a></li>
+              <li><a href="../../#experience">experience</a></li>
+              <li><a href="../../#contact">contact</a></li>
+              <li><a href="../../pages/projects.html">projects</a></li>
+              <li><a href="../../pages/fun.html">fun</a></li>
+            </ul>
+          </div>
+        </nav>
+        <p>&#169; 2024 Andrew Leach. All Rights Reserved.</p>
+      </footer> -->
 
       <script src="../../script.js" async defer></script>
     </html>

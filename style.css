@@ -538,7 +538,7 @@ article .icon {
   margin: 4rem auto;
 }
 
-.project-card {
+.projects-card {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -546,13 +546,13 @@ article .icon {
   transition: all 0.3s ease;
 }
 
-.project-card:hover {
+.projects-card:hover {
   translate: 0 -5px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
 }
 
-.project-card a {
+.projects-card a {
   display: flex;
   align-items: flex-start;
   padding: 1rem;
@@ -561,7 +561,7 @@ article .icon {
   height: 100%;
 }
 
-.project-image {
+.projects-image {
   height: 200px;
   width: 200px;
   object-fit: cover;
@@ -571,23 +571,24 @@ article .icon {
   flex-shrink: 0;
 }
 
-.project-details {
+.projects-details {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   height: 100%;
 }
 
-.project-title {
+.projects-title {
   font-size: 1.85rem;
 }
 
-.project-date, .project-timeframe {
+.projects-date,
+.projects-timeframe {
   font-size: 1.2rem;
   color: var(--charcoal_);
 }
 
-.project-desc {
+.projects-desc {
   font-size: 1rem;
   color: #666;
   margin-top: auto;
@@ -654,4 +655,74 @@ footer p {
   text-align: center;
   margin-top: auto;
   margin-bottom: 6.5rem;
+}
+
+/* FOR PROJECTS */
+.project {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 24rem;
+  gap: 2rem;
+  height: 100vh;
+}
+
+.project-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5vh;
+  left: 5vh;
+  padding: 25px;
+  line-height: 150%;
+  border: 0px black;
+  float: left;
+  margin-top: 2vh;
+  z-index: 1;
+}
+
+.project-sidebar a {
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+
+.project-link :hover {
+  transform: scale(1.15);
+  transition: all 0.15s ease;
+}
+
+.project a {
+  font-weight: 600;
+}
+
+.project-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.project p {
+  font-size: 1.15rem;
+  color: black;
+  text-align: left;
+  align-self: flex-start;
+}
+
+.project strong {
+  font-weight: 600;
+}
+
+.project-img {
+  width: 600;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.project h2 {
+  align-self: flex-start;
+  text-align: left;
 }

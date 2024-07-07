@@ -43,14 +43,14 @@ function genProjects() {
   projects_ordered.forEach((proj) => {
     const proj_ele = document.createElement("div");
 
-    proj_ele.classList.add("project-card");
+    proj_ele.classList.add("projects-card");
     proj_ele.innerHTML = `
-        <a href="${proj.link}" target="_blank">
-            <img class="project-image" alt="${proj.title} Image" src="${proj.image}" style="width: 200px; height: 200px;" />
-            <div class="project-details">
-                <h3 class="project-title">${proj.title}</h3>
-                <p class="project-date">${proj.date} • ${proj.timeframe}</p>
-                <p class="project-desc">${proj.desc}</p>
+        <a href="${proj.link}">
+            <img class="projects-image" alt="${proj.title} Image" src="${proj.image}" style="width: 200px; height: 200px;" />
+            <div class="projects-details">
+                <h3 class="projects-title">${proj.title}</h3>
+                <p class="projects-date">${proj.date} • ${proj.timeframe}</p>
+                <p class="projects-desc">${proj.desc}</p>
             </div>
         </a>
     `;
