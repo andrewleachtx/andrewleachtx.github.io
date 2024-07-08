@@ -73,10 +73,11 @@
       </nav>
 
       <div class="project-sidebar">
+        <a href="#raytracer">Ray Tracing</a>
         <a href="#rasterization">Rasterization</a>
         <a href="#what-is-raytracing">Ray Tracing In 3 Steps</a>
         <a href="#c++-implementation">C++ Implementation</a>
-        <a href="#scenes">Scenes</a>
+        <a href="#scenes">Scene Images</a>
         <a href="#threading">Threading & Optimizations</a>
         <a href="#bounding-volumes">Bounding Volume Problem</a>
         <a href="#anti-aliasing">Anti-Aliasing</a>
@@ -290,6 +291,15 @@
             >
             to load any .obj meshes (such as the bunny in Scenes 6-7)
           </li>
+          <li>
+            <a
+              href="https://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/raytri/"
+              target="_blank"
+            >
+              raytri.c</a
+            >
+            for optimized ray-triangle intersection tests within meshes
+          </li>
         </ul>
 
         <p>
@@ -329,8 +339,6 @@
             <strong>Mesh</strong> to store vectorized information about OBJ data
           </li>
         </ul>
-
-        This was all done with the goal of
 
         <h2 id="scenes">Scenes</h2>
         <p>
@@ -575,6 +583,19 @@
         </p>
 
         <h2 id="anti-aliasing">Anti-Aliasing</h2>
+        <p>
+          Throughout this writing I have mentioned the idea of shooting a ray
+          through a pixel or
+          <strong>through the "center" of the pixel</strong>. This is what
+          normal ray tracing without anti-aliasing would look like.
+        </p>
+        <p>
+          Anti-aliasing is described as the process of
+          <strong>removing jagged edges along a shape's border</strong> that
+          exist because we discretely map each pixel to one color from the
+          scene. This does not handle differentiating the last pixel of a
+          watermelon from the blue wall behind it.
+        </p>
 
         <div class="project-img-container">
           <img
@@ -587,20 +608,6 @@
         </div>
 
         <p>
-          Throughout this writing I have mentioned the idea of shooting a ray
-          through a pixel or
-          <strong>through the "center" of the pixel</strong>. This is what
-          normal ray tracing without anti-aliasing would look like.
-        </p>
-        <p>
-          Anti-aliasing is described as the process of
-          <strong>removing jagged edges along a shape's border</strong> that
-          exist because we discretely map each pixel to one color from the
-          scene. This does not handle the change from the last pixel
-          representing a watermelon and the blue wall behind it.
-        </p>
-
-        <p>
           Instead, what if we argued the color for a
           <strong
             >pixel is the weighted average of multiple rays that pass through
@@ -609,11 +616,24 @@
           This is the fundamental idea behind this anti-aliasing - get a
           <strong>more accurate representation of a pixel</strong>.
         </p>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/mergedAA.jpg"
+            alt="Anti-Aliasing 1x and 16x"
+            class="project-img"
+            style="width: 125%; height: auto"
+          />
+          <div>
+            Scene 4, 512x512, no anti-aliasing (<strong>left</strong>) and 16x
+            anti-aliasing (<strong>right</strong>)
+          </div>
+        </div>
+
         <p>
-          Ok, but where do you shoot the rays? Well, I divided the pixel into an
-          even partition and shot the rays the center of those partitions. Or,
-          you could more interestingly shoot them at random. It works
-          surprisingly well...
+          As far as where you should shoot the now increased rays per pixel, I
+          chose to do it evenly throughout the pixel, but you can also do it
+          completely randomly - the results are surprisingly good...
         </p>
 
         <h2>Constructive Solid Geometry</h2>
