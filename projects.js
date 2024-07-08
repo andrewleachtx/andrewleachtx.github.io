@@ -5,7 +5,7 @@ const projects = [
     timeframe: "1 month",
     image: "../projects/raytracer/assets/scene.png",
     link: "../projects/raytracer/raytracer.html",
-    desc: "Ray tracing engine featuring constructive solid geometry, anti-aliasing, multithreading, and 9 scenes.",
+    desc: "C++ ray tracing engine (from scratch) featuring constructive solid geometry, anti-aliasing, multithreading, and 9 scenes.",
   },
   {
     title: "Personal Website",

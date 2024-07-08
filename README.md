@@ -5,3 +5,5 @@
 2. [MathJax](https://docs.mathjax.org/en/latest/basic/mathematics.html) has two main points:
    1. **Inline**: `\( ... \)`
    2. **Standalone/Display**: `$$ ... $$`
+   
+3. [PrismJS](https://prismjs.com/) for embedding code highlights.

@@ -8,6 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../../style.css" />
     <link rel="stylesheet" href="../../mediaqueries.css" />
+
+    <!-- MathJax -->
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+
+    <!-- For Pretty Code -->
+    <link rel="stylesheet" href="../../prism.css" />
+    <script src="../../prism.js"></script>
   </head>
 
   <body>
@@ -28,6 +39,7 @@
             </li>
             <li><a href="../../#about">me</a></li>
             <li><a href="../../#experience">experience</a></li>
+            <li><a href="../../#contact">contact</a></li>
             <li><a href="../../pages/projects.html">projects</a></li>
             <li><a href="../../pages/fun.html">fun</a></li>
           </ul>
@@ -47,6 +59,7 @@
             <li>
               <a href="../../#experience" onclick="toggleMenu()">experience</a>
             </li>
+            <li><a href="../../#contact">contact</a></li>
             <li>
               <a href="../../pages/projects.html" onclick="toggleMenu()"
                 >projects</a
@@ -60,18 +73,22 @@
       </nav>
 
       <div class="project-sidebar">
-        <a href="./raytracer.html">Ray Tracer</a>
-        <a href="#what-is-raytracing">What is Ray Tracing?</a>
+        <a href="#rasterization">Rasterization</a>
+        <a href="#what-is-raytracing">Ray Tracing In 3 Steps</a>
+        <a href="#c++-implementation">C++ Implementation</a>
+        <a href="#scenes">Scenes</a>
       </div>
 
       <section id="raytracer" class="project">
-        <h3 class="project-title">Ray Tracer</h3>
+        <h3 class="project-title">Ray Tracing</h3>
 
-        <p class="section__text__p1">
+        <p>
           Growing up playing video games and fantasizing about one day building
           my dream computer with only the most outrageously powerful parts, the
           phrase
-          <a href="https://en.wikipedia.org/wiki/Ray_tracing_(graphics)"
+          <a
+            href="https://en.wikipedia.org/wiki/Ray_tracing_(graphics)"
+            target="_blank"
             >ray tracing</a
           >
           was simple: it could make games look <em>real</em> - like you were
@@ -79,31 +96,263 @@
           really expensive).
         </p>
 
-        <p class="section__text__p1">
-          After my fortunate introduction to graphics, the way I would now
-          describe ray tracing to my friends is as follows:
+        <p>
+          After my introduction to graphics, the way I would now describe ray
+          tracing to my friends is as follows:
           <strong>you already know how to ray trace</strong>. That is to say, it
-          is the intuitive way to render a scene, replicating what our eyes and
-          brains do on a <a href="">60 times per second?</a> basis.
+          is the intuitive way to render a scene; ray tracing replicates what
+          our eyes and brains do
+          <a
+            href="https://www.sighthound.com/blog/human-eye-fps-vs-ai-why-ai-is-better"
+            target="_blank"
+            >60 times every second</a
+          >.
         </p>
 
-        <img src="./assets/scene.png" alt="My Scene" class="project-img" />
+        <div class="project-img-container">
+          <img src="./assets/scene.png" alt="My Scene" class="project-img" />
+          <div>Scene 9</div>
+        </div>
 
-        <h2 id="what-is-raytracing">What is Ray Tracing?</h2>
-        <p class="section__text__p1">...tbd</p>
-        <h2 id="">It's Really Only 3 Steps (Right?)</h2>
-        <p class="section__text__p1">...tbd</p>
-        <h2>Scenes</h2>
-        <p class="section__text__p1">...tbd</p>
+        <p>
+          I am sure there are many nuances to my explanation of ray tracing.
+          This serves as a blog and documentation for my logic and
+          implementation in C++ for a ray tracer. Because this was done in my
+          graphics course (with the guidance of
+          <a href="https://people.engr.tamu.edu/sueda/index.html"
+            >Dr. Shinjiro Sueda</a
+          >), the codebase is not public.
+        </p>
+
+        <h2 id="rasterization">Rasterization</h2>
+        <p>
+          Before starting, I should note that ray tracing is not a new concept -
+          despite recent popularity in the gaming industry over the past decade,
+          it has been around since the 1960s. Why is it popular now? Well, I
+          think you'll be able to come up with an answer yourself.
+        </p>
+        <p>
+          There must then be other methods responsible for the feats of
+          real-time graphics over the past ~30 years. The most well-known
+          strategy in the conversation, adjacent to ray tracing, is
+          <a
+            href="https://blogs.nvidia.com/blog/whats-difference-between-ray-tracing-rasterization/#attachment_39178"
+            target="_blank"
+            >rasterization</a
+          >. If a <strong>raster</strong> is a group of pixels in a 2D grid,
+          then <strong>rasterization</strong> is the process by which we convert
+          3D shapes into pixels in on your (2D) screen.
+        </p>
+        <p>
+          There is a lot of rasterization lore that is tempting to dive into,
+          but lets assume you've already read up on it (hopefully soon I can
+          write up docs for my
+          <a href="../../pages/projects.html">rasterizer project</a>).
+        </p>
+        <h2 id="what-is-raytracing">Ray Tracing In 3 Steps</h2>
+        <div class="project-img-container">
+          <img
+            class="project-img"
+            src="./assets/frustum.png"
+            alt="Screenshot from Michael Stewart"
+            style="width: 100%; height: 400px"
+          />
+          <div>
+            Screenshot taken from Michael Stewart's amazing ray tracing
+            <a
+              href="https://michaelstewart2.github.io/RayTeaching1.1/index.html"
+              target="_blank"
+              >visualizer</a
+            >
+          </div>
+        </div>
+        <p>
+          Ray tracing says that in front of your eyes there is a 2D grid, known
+          as the
+          <a
+            href="https://help.agi.com/STKComponents/html/GraphicsCameraViewFrustum.htm"
+            target="_blank"
+            >view frustum</a
+          >. In our case, this view frustum is composed of evenly distributed
+          pixels. Sounds familiar? That's because you're reading this off of
+          one.
+        </p>
+
+        <p>
+          Now, we <strong>always</strong> have a scene in front of us. Maybe a
+          tortoise, some trees, a house, whatever. We want to transform that 3D
+          scene into pixels on a screen. Now the question is,
+          <strong
+            >what colors do we give to each pixel so that when combined on the
+            screen, they tell our brain there is a tortoise?</strong
+          >
+        </p>
+
+        <pre><code class="language-python">for pixel in image:
+          1. generate ray
+          2. find closest intersection
+          3. compute color</code></pre>
+
+        $$\vec{x}(t) = \vec{p} + t\hat{v}$$
+
+        <p>
+          A ray has an origin \(\vec{p}\), and a direction \(\hat{v}\). At a
+          high level ray tracing argues: if for each pixel you shoot a ray from
+          the eye (camera) through the pixel's center, you will
+          <em>eventually</em> hit an object in the scene. At that intersection
+          point, you can determine the intensity of light with a typical
+          <a
+            href="https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model"
+            target="_blank"
+            >Blinn Phong</a
+          >
+          model.
+        </p>
+
+        <p>
+          Basically, you get the color of the object at that point, and the
+          degree to which that color is accentuated depends on the light
+          sources.
+          <strong>That color becomes the color of that pixel.</strong>
+        </p>
+
+        <div class="project-img-container">
+          <img
+            class="project-img"
+            src="assets/tracingbasics.png"
+            alt="Tracing Basic PNG"
+            style="width: 50%; height: auto"
+          />
+          <div>
+            Ray tracing basics,
+            <a
+              href="https://en.wikipedia.org/wiki/Ray_tracing_(graphics)#/media/File:Ray_trace_diagram.svg"
+              target="_blank"
+              >Wikipedia</a
+            >
+          </div>
+        </div>
+
+        <p>
+          For example, this sphere became an orange ball on the frustum because
+          a collection of rays from the camera intersected with the sphere at
+          those orange points. The other ones hit white planes (the ground and
+          walls) and became white, or gray for ones that were occluded from the
+          light's perspective.
+        </p>
+
+        <h2 id="c++-implementation">C++ Implementation</h2>
+        <p>
+          The ray tracer was implemented in C++ with glm to abstract matrix
+          math, stb_image_write to export pixel data into an image, and
+          tinyobjloader to load any .obj files (such as the bunny in Scene 9).
+        </p>
+
+        <h2 id="scenes">Scenes</h2>
+        <p>
+          These scenes can be rendered in variable resolution (within reason);
+          anti-aliasing samples per pixel; and parallel multithreaded chunk
+          counts. Rendering was done on the CPU as this native C++ executable
+          does not leverage parallelization through CUDA or any other GPU
+          frameworks.
+        </p>
+
+        <p>
+          This did not serve to be problematic given the simplicity of the
+          scenes and efficiency of the code (especially with std::thread on the
+          CPU).
+        </p>
+
+        <p>
+          Scenes 1-8 were rendered in 512x512 without anti-aliasing on. Scene 9,
+          however, was rendered in 1024x1024 with 8x AA sampling per pixel.
+        </p>
+        <div class="project-img-container">
+          <img
+            src="./assets/scene1.png"
+            alt="Scene 1"
+            class="project-img-scene"
+          />
+          <div>Scene(s) 1-2 with spheres and shadows</div>
+        </div>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/scene3.png"
+            alt="Scene 3"
+            class="project-img-scene"
+          />
+          <div>Scene 3 with ellipsoids, two lights</div>
+        </div>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/scene4.png"
+            alt="Scene 4"
+            class="project-img-scene"
+          />
+          <div>Scene 4 with recursive reflective spheres</div>
+        </div>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/scene5.png"
+            alt="Scene 5"
+            class="project-img-scene"
+          />
+          <div>Scene 5</div>
+        </div>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/scene6.png"
+            alt="Scene 6"
+            class="project-img-scene"
+          />
+          <div>Scene 6 triangle-ray intersection for .obj mesh</div>
+        </div>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/scene7.png"
+            alt="Scene 7"
+            class="project-img-scene"
+          />
+          <div>Scene 7 tri-ray intersections with model transformation</div>
+        </div>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/scene8.png"
+            alt="Scene 8"
+            class="project-img-scene"
+          />
+          <div>Scene 8 camera transform of Scene 1</div>
+        </div>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/scene.png"
+            alt="Scene 9"
+            class="project-img-scene"
+          />
+          <div>
+            Scene 9 with anti-aliasing, reflective blinn-phong, constructive
+            solid geometry, multithreading, and boxes.
+          </div>
+        </div>
+
+        <h2>Render Times</h2>
+        <p>...tbd</p>
         <h2>Addons & Optimizations</h2>
-        <p class="section__text__p1">...tbd</p>
+        <p>...tbd</p>
         <h2>Future</h2>
-        <p class="section__text__p1">...tbd</p>
+        <p>...tbd</p>
         <h2>Credits</h2>
-        <p class="section__text__p1">...tbd</p>
+        <p>...tbd</p>
       </section>
 
-      <!-- <footer>
+      <footer>
         <nav>
           <div class="nav-links-container">
             <ul class="nav-links">
@@ -125,7 +374,7 @@
           </div>
         </nav>
         <p>&#169; 2024 Andrew Leach. All Rights Reserved.</p>
-      </footer> -->
+      </footer>
 
       <script src="../../script.js" async defer></script>
     </html>

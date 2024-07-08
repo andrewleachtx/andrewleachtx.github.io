@@ -65,12 +65,11 @@ nav,
 nav {
   justify-content: space-around;
   align-items: center;
-  height: 17.5vh;
+  height: 15vh;
 }
 
 .nav-links {
   gap: 1.3rem;
-  /* Remove bullet points */
   list-style: none;
   font-size: 1.5rem;
 }
@@ -645,16 +644,14 @@ article .icon {
 /* FOOTER SECTION */
 
 footer {
-  height: 26vh;
-  margin: 0 1 rem;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
 
 footer p {
   text-align: center;
-  margin-top: auto;
-  margin-bottom: 6.5rem;
+  margin-bottom: 2rem;
 }
 
 /* FOR PROJECTS */
@@ -664,8 +661,8 @@ footer p {
   flex-direction: column;
   align-items: center;
   margin: 0 24rem;
-  gap: 2rem;
-  height: 100vh;
+  gap: 1.5rem;
+  height: auto;
 }
 
 .project-sidebar {
@@ -689,13 +686,13 @@ footer p {
   font-weight: 600;
 }
 
-.project-link :hover {
-  transform: scale(1.15);
-  transition: all 0.15s ease;
-}
-
 .project a {
   font-weight: 600;
+  color: blue;
+}
+
+.project a:hover {
+  color: var(--purple_);
 }
 
 .project-title {
@@ -715,14 +712,47 @@ footer p {
   font-weight: 600;
 }
 
+.project-img-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 1rem;
+}
+
 .project-img {
-  width: 600;
-  height: 600px;
-  object-fit: cover;
+  width: 600px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+.project-img-scene {
+  width: 500px;
+  height: auto;
+  object-fit: contain;
   border-radius: 15px;
 }
 
 .project h2 {
   align-self: flex-start;
   text-align: left;
+}
+
+.project pre {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  border-left: 4px solid #bbb2e9;
+  color: #666;
+  page-break-inside: avoid;
+  font-family: monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1em 1.5em;
+  display: block;
+  word-wrap: break-word;
 }
