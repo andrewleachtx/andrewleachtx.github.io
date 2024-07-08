@@ -77,6 +77,9 @@
         <a href="#what-is-raytracing">Ray Tracing In 3 Steps</a>
         <a href="#c++-implementation">C++ Implementation</a>
         <a href="#scenes">Scenes</a>
+        <a href="#threading">Threading & Optimizations</a>
+        <a href="#bounding-volumes">Bounding Volume Problem</a>
+        <a href="#anti-aliasing">Anti-Aliasing</a>
       </div>
 
       <section id="raytracer" class="project">
@@ -149,6 +152,7 @@
           write up docs for my
           <a href="../../pages/projects.html">rasterizer project</a>).
         </p>
+
         <h2 id="what-is-raytracing">Ray Tracing In 3 Steps</h2>
         <div class="project-img-container">
           <img
@@ -166,9 +170,27 @@
             >
           </div>
         </div>
+
         <p>
-          Ray tracing says that in front of your eyes there is a 2D grid, known
-          as the
+          Imagine your eyes shoot <em>infinitely</em> many rays out to every
+          possible object in the world around you. The watermelon slices on your
+          counter, your floor, your tortoise, etc. Well, when one of those rays
+          reaches or <strong>intercepts</strong> with the watermelon, you see
+          green and red (unless you collect rare watermelons).
+        </p>
+
+        <p>
+          Well imagine that watermelon, like any other object, is composed of
+          tiny spots of color that combine to make the pattern you recognize as
+          a watermelon. Each ray your eye shoots
+          <strong>hits a unique spot</strong>, and bounces to any nearby light
+          sources to ascertain how "bright" that green spot should be. That is
+          what happens for one pixel in ray tracing.
+        </p>
+
+        <p>
+          Now, ray tracing says that in front of your eyes there is a 2D grid,
+          known as the
           <a
             href="https://help.agi.com/STKComponents/html/GraphicsCameraViewFrustum.htm"
             target="_blank"
@@ -189,16 +211,16 @@
         </p>
 
         <pre><code class="language-python">for pixel in image:
-          1. generate ray
-          2. find closest intersection
-          3. compute color</code></pre>
+            1. generate ray
+            2. find closest object that intersects with ray
+            3. compute color of pixel based on light(s)</code></pre>
 
         $$\vec{x}(t) = \vec{p} + t\hat{v}$$
 
         <p>
           A ray has an origin \(\vec{p}\), and a direction \(\hat{v}\). At a
-          high level ray tracing argues: if for each pixel you shoot a ray from
-          the eye (camera) through the pixel's center, you will
+          high level ray tracing argues that if for each pixel you shoot a ray
+          from the eye (camera) through the pixel's center, you will
           <em>eventually</em> hit an object in the scene. At that intersection
           point, you can determine the intensity of light with a typical
           <a
@@ -213,7 +235,7 @@
           Basically, you get the color of the object at that point, and the
           degree to which that color is accentuated depends on the light
           sources.
-          <strong>That color becomes the color of that pixel.</strong>
+          <strong>The pixel receives that final color.</strong>
         </p>
 
         <div class="project-img-container">
@@ -224,7 +246,7 @@
             style="width: 50%; height: auto"
           />
           <div>
-            Ray tracing basics,
+            Ray trace diagram,
             <a
               href="https://en.wikipedia.org/wiki/Ray_tracing_(graphics)#/media/File:Ray_trace_diagram.svg"
               target="_blank"
@@ -243,18 +265,79 @@
 
         <h2 id="c++-implementation">C++ Implementation</h2>
         <p>
-          The ray tracer was implemented in C++ with glm to abstract matrix
-          math, stb_image_write to export pixel data into an image, and
-          tinyobjloader to load any .obj files (such as the bunny in Scene 9).
+          The ray tracer was written in vanilla C++17, primarily relying on STL
+          libraries. The only supplementary libraries I used are:
         </p>
+
+        <ul>
+          <li>
+            <a href="https://github.com/g-truc/glm" target="_blank">glm</a> to
+            abstract matrix math
+          </li>
+          <li>
+            <a
+              href="https://github.com/nothings/stb/blob/master/stb_image_write.h"
+              target="_blank"
+              >stb_image_write.h</a
+            >
+            to export pixel data into an image
+          </li>
+          <li>
+            <a
+              href="https://github.com/tinyobjloader/tinyobjloader"
+              target="_blank"
+              >tinyobjloader</a
+            >
+            to load any .obj meshes (such as the bunny in Scenes 6-7)
+          </li>
+        </ul>
+
+        <p>
+          The task of developing an actual ray tracer required a lot of
+          object-oriented design and refactoring of code. The most commonly
+          stored information was a glm::vec3, namely ones that held (x, y, z)
+          information. To name some classes I ended up with:
+        </p>
+
+        <ul>
+          <li>
+            <strong>Ray</strong> to store XYZ values for a ray's origin and
+            direction
+          </li>
+          <li>
+            <strong>Light</strong> to define position and intensity for light
+            sources
+          </li>
+          <li>
+            <strong>Camera</strong> for storing eye position + translations,
+            aspect ratio, fovy, etc
+          </li>
+          <li>
+            <strong>Material</strong> to store the unique diffuse and specular
+            colors/floats a specific object should have
+          </li>
+          <li>
+            <strong>Shape</strong> with polymorphism / inheritance as the
+            primary goal for multiple shape types and their unique intersection
+            and hit methods
+          </li>
+          <li>
+            <strong>Scene</strong> as a wrapper container for specific instances
+            of lights and shapes
+          </li>
+          <li>
+            <strong>Mesh</strong> to store vectorized information about OBJ data
+          </li>
+        </ul>
+
+        This was all done with the goal of
 
         <h2 id="scenes">Scenes</h2>
         <p>
-          These scenes can be rendered in variable resolution (within reason);
+          These scenes can be rendered at variable resolution (within reason);
           anti-aliasing samples per pixel; and parallel multithreaded chunk
-          counts. Rendering was done on the CPU as this native C++ executable
-          does not leverage parallelization through CUDA or any other GPU
-          frameworks.
+          counts. Rendering was done on the CPU as my existing code does not
+          leverage parallelization through CUDA or any other GPU frameworks.
         </p>
 
         <p>
@@ -264,87 +347,276 @@
         </p>
 
         <p>
-          Scenes 1-8 were rendered in 512x512 without anti-aliasing on. Scene 9,
-          however, was rendered in 1024x1024 with 8x AA sampling per pixel.
+          You may note some scenes are duplicated, this is because certain pairs
+          of tasks are incremental, and the latter was presented. Scenes 1-8
+          were rendered in 512x512 without anti-aliasing on. Scene 9, however,
+          was rendered in 1024x1024 with 8x AA sampling per pixel.
         </p>
-        <div class="project-img-container">
-          <img
-            src="./assets/scene1.png"
-            alt="Scene 1"
-            class="project-img-scene"
-          />
-          <div>Scene(s) 1-2 with spheres and shadows</div>
-        </div>
 
-        <div class="project-img-container">
-          <img
-            src="./assets/scene3.png"
-            alt="Scene 3"
-            class="project-img-scene"
-          />
-          <div>Scene 3 with ellipsoids, two lights</div>
-        </div>
+        <div class="project-img-group">
+          <div class="project-img-list">
+            <img
+              src="./assets/scene1.png"
+              alt="Scene 1"
+              class="project-img-scene"
+            />
+            Scene 1 (no shadows) and 2 (shadows)
+          </div>
 
-        <div class="project-img-container">
-          <img
-            src="./assets/scene4.png"
-            alt="Scene 4"
-            class="project-img-scene"
-          />
-          <div>Scene 4 with recursive reflective spheres</div>
-        </div>
+          <div class="project-img-list">
+            <img
+              src="./assets/scene3.png"
+              alt="Scene 3"
+              class="project-img-scene"
+            />
+            Scene 3 (ellipsoid)
+          </div>
 
-        <div class="project-img-container">
-          <img
-            src="./assets/scene5.png"
-            alt="Scene 5"
-            class="project-img-scene"
-          />
-          <div>Scene 5</div>
-        </div>
+          <div class="project-img-list">
+            <img
+              src="./assets/scene4.png"
+              alt="Scene 4"
+              class="project-img-scene"
+            />
+            Scene 4 (singular reflection) and 5 (recursive reflection)
+          </div>
 
-        <div class="project-img-container">
-          <img
-            src="./assets/scene6.png"
-            alt="Scene 6"
-            class="project-img-scene"
-          />
-          <div>Scene 6 triangle-ray intersection for .obj mesh</div>
-        </div>
+          <div class="project-img-list">
+            <img
+              src="./assets/scene6.png"
+              alt="Scene 6"
+              class="project-img-scene"
+            />
+            Scene 6 (triangle-ray intersection for .obj mesh)
+          </div>
 
-        <div class="project-img-container">
-          <img
-            src="./assets/scene7.png"
-            alt="Scene 7"
-            class="project-img-scene"
-          />
-          <div>Scene 7 tri-ray intersections with model transformation</div>
-        </div>
+          <div class="project-img-list">
+            <img
+              src="./assets/scene7.png"
+              alt="Scene 7"
+              class="project-img-scene"
+            />
+            Scene 7 (triangle-ray intersections with model transformation)
+          </div>
 
-        <div class="project-img-container">
-          <img
-            src="./assets/scene8.png"
-            alt="Scene 8"
-            class="project-img-scene"
-          />
-          <div>Scene 8 camera transform of Scene 1</div>
-        </div>
+          <div class="project-img-list">
+            <img
+              src="./assets/scene8.png"
+              alt="Scene 8"
+              class="project-img-scene"
+            />
+            Scene 8 (camera transformation of Scene 1)
+          </div>
 
-        <div class="project-img-container">
-          <img
-            src="./assets/scene.png"
-            alt="Scene 9"
-            class="project-img-scene"
-          />
-          <div>
-            Scene 9 with anti-aliasing, reflective blinn-phong, constructive
-            solid geometry, multithreading, and boxes.
+          <div class="project-img-list">
+            <img
+              src="./assets/scene.png"
+              alt="Scene 9"
+              class="project-img-scene"
+            />
+            Scene 9 (anti-aliasing, reflective blinn-phong, constructive solid
+            geometry, multithreading, and boxes).
           </div>
         </div>
 
-        <h2>Render Times</h2>
-        <p>...tbd</p>
-        <h2>Addons & Optimizations</h2>
+        <h2 id="threading">Multithreading & Render Optimization</h2>
+        <p>
+          If you think about the ray tracing algorithm, it is doing a lot of
+          work in series: iterate over each pixel, shoot a ray, recursively
+          bounce more if an object is reflective or not, etc.
+        </p>
+
+        <p>
+          Because this work for one pixel is independent of another, concurrency
+          challenges are minimized - and parallelization is a natural thought. I
+          used <strong>std::thread</strong> to split up the work into chunks,
+          and join them at the end.
+        </p>
+
+        <p>
+          The following data was collected at 1024x1024, 1 ray per pixel (no
+          AA), and 30 max recursive bounces for reflections. The series
+          generation is based on 1 thread (normal), and for parallel 16 threads.
+        </p>
+
+        <table class="performance-table">
+          <thead>
+            <tr>
+              <th>Scene</th>
+              <th>Resolution</th>
+              <th>Series Runtime (seconds)</th>
+              <th>Parallel Runtime (seconds)</th>
+              <th>Improvement (%)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>1024x1024</td>
+              <td>0.367059</td>
+              <td>0.149398</td>
+              <td>59.30%</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>1024x1024</td>
+              <td>0.362205</td>
+              <td>0.166128</td>
+              <td>54.13%</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>1024x1024</td>
+              <td>0.629310</td>
+              <td>0.227803</td>
+              <td>63.80%</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>1024x1024</td>
+              <td>3.479643</td>
+              <td>0.314233</td>
+              <td>90.97%</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>1024x1024</td>
+              <td>0.975385</td>
+              <td>0.302306</td>
+              <td>69.01%</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>1024x1024</td>
+              <td>50.655735</td>
+              <td>9.789422</td>
+              <td>80.68%</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>1024x1024</td>
+              <td>139.551437</td>
+              <td>23.142061</td>
+              <td>83.42%</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>1024x1024</td>
+              <td>0.414549</td>
+              <td>0.198096</td>
+              <td>52.21%</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>1024x1024</td>
+              <td>106.289078</td>
+              <td>26.270395</td>
+              <td>75.29%</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          This improvement was not just to look at the numbers. Without
+          implementing multithreading, I would not have been able to rapidly
+          develop and render these scenes in a reasonable amount of time with my
+          other coursework. This was a pretty exciting use of std::thread back
+          from my systems courses (and at the time, Operating Systems).
+        </p>
+
+        <h2 id="bounding-volumes">Bounding Volumes</h2>
+        <p>
+          It is notable that scenes 6, 7, and 9 are outliers for time
+          comparatively speaking; this is because the use of a mesh (the
+          <a href="https://en.wikipedia.org/wiki/Stanford_bunny" target="_blank"
+            >Stanford bunny</a
+          >), which is actually a
+          <strong>collection of very many triangles</strong>. This is completely
+          different from other shapes, which were overloaded with an
+          intersection function called once for that shape.
+        </p>
+
+        <p>
+          For a "mesh" shape, your intersection function must know if a ray
+          intersected with any of the triangles that reside within the mesh. The
+          issue then becomes:
+          <strong
+            >we must always perform a linear search, iterating over every single
+            triangle</strong
+          >.
+        </p>
+        <p>
+          Given that the bunny has 4968 triangles, and we have \(1024^2\) pixels
+          / rays, we have to do \(1024^2 * 4968\) checks.
+          <strong>One check per ray, for every single triangle</strong>. This
+          brings up the minimum bounding box problem, which is an entire
+          different beast of its own.
+        </p>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/boundingboxes.png"
+            alt="Bounding Volume"
+            class="project-img"
+            style="width: 65%; height: auto"
+          />
+          Bounding volumes and tradeoffs, Ericson - Real-Time Collision
+          Detection
+        </div>
+
+        <p>
+          The simplest way to resolve this was by implementing a simple bounding
+          sphere - if it intersects with that sphere,
+          <strong>only then should we iterate</strong>. Because I did not
+          implement a more advanced bounding volume techniques, (i.e.
+          <a href="https://en.wikipedia.org/wiki/Bounding_volume_hierarchy"
+            >BVH</a
+          >), the bunny was a limiting factor in render time for those scenes.
+        </p>
+
+        <h2 id="anti-aliasing">Anti-Aliasing</h2>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/1xAA.png"
+            alt="Anti-Aliasing 1x"
+            class="project-img"
+            style="width: 120%; height: auto"
+          />
+          Scene 4, no anti-aliasing (1x)
+        </div>
+
+        <p>
+          Throughout this writing I have mentioned the idea of shooting a ray
+          through a pixel or
+          <strong>through the "center" of the pixel</strong>. This is what
+          normal ray tracing without anti-aliasing would look like.
+        </p>
+        <p>
+          Anti-aliasing is described as the process of
+          <strong>removing jagged edges along a shape's border</strong> that
+          exist because we discretely map each pixel to one color from the
+          scene. This does not handle the change from the last pixel
+          representing a watermelon and the blue wall behind it.
+        </p>
+
+        <p>
+          Instead, what if we argued the color for a
+          <strong
+            >pixel is the weighted average of multiple rays that pass through
+            the pixel?</strong
+          >
+          This is the fundamental idea behind this anti-aliasing - get a
+          <strong>more accurate representation of a pixel</strong>.
+        </p>
+        <p>
+          Ok, but where do you shoot the rays? Well, I divided the pixel into an
+          even partition and shot the rays the center of those partitions. Or,
+          you could more interestingly shoot them at random. It works
+          surprisingly well...
+        </p>
+
+        <h2>Constructive Solid Geometry</h2>
         <p>...tbd</p>
         <h2>Future</h2>
         <p>...tbd</p>

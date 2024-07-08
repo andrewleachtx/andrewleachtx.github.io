@@ -16,6 +16,14 @@ const projects = [
     desc: "This website - built on native HTML, CSS, and JavaScript.",
   },
   {
+    title: "pypocketwatch",
+    date: "May 2024",
+    timeframe: "2 weeks",
+    image: "../assets/pypocketwatch.png",
+    link: "https://github.com/andrewleachtx/pypocketwatch/",
+    desc: "Daily updating script to scrape, filter, and report online noise relating to the sale of the Seiko SARY085, my favorite watch.",
+  },
+  {
     title: "TBD...",
     date: "January 0000",
     timeframe: "",
