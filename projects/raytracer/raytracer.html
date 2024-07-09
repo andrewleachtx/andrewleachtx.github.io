@@ -145,7 +145,7 @@
             >rasterization</a
           >. If a <strong>raster</strong> is a group of pixels in a 2D grid,
           then <strong>rasterization</strong> is the process by which we convert
-          3D shapes into pixels in on your (2D) screen.
+          3D shapes into pixels on your (2D) screen.
         </p>
         <p>
           There is a lot of rasterization lore that is tempting to dive into,
@@ -259,14 +259,14 @@
         <p>
           For example, this sphere became an orange ball on the frustum because
           a collection of rays from the camera intersected with the sphere at
-          those orange points. The other ones hit white planes (the ground and
-          walls) and became white, or gray for ones that were occluded from the
-          light's perspective.
+          those orange points. The other rays hit perhaps white planes (the
+          ground and walls) and became white, or gray (shadows) for ones that
+          were occluded from the light's perspective.
         </p>
 
         <h2 id="c++-implementation">C++ Implementation</h2>
         <p>
-          The ray tracer was written in vanilla C++17, primarily relying on STL
+          I wrote this ray tracer in vanilla C++17, primarily relying on STL
           libraries. The only supplementary libraries I used are:
         </p>
 
@@ -289,7 +289,7 @@
               target="_blank"
               >tinyobjloader</a
             >
-            to load any .obj meshes (such as the bunny in Scenes 6-7)
+            to load any .obj meshes (such as the bunny in scenes 6-7)
           </li>
           <li>
             <a
@@ -303,10 +303,10 @@
         </ul>
 
         <p>
-          The task of developing an actual ray tracer required a lot of
-          object-oriented design and refactoring of code. The most commonly
-          stored information was a glm::vec3, namely ones that held (x, y, z)
-          information. To name some classes I ended up with:
+          Setting theory aside, actually implementing the ray tracer required a
+          lot of object-oriented design and refactoring of code. Most
+          abstractions consisted of one or more glm::vec3's, namely ones that
+          held (x, y, z) information. To name some classes I ended up with:
         </p>
 
         <ul>
@@ -355,10 +355,10 @@
         </p>
 
         <p>
-          You may note some scenes are duplicated, this is because certain pairs
-          of tasks are incremental, and the latter was presented. Scenes 1-8
-          were rendered in 512x512 without anti-aliasing on. Scene 9, however,
-          was rendered in 1024x1024 with 8x AA sampling per pixel.
+          You may note some scenes are listed in pairs - this is because certain
+          scenes were designed incrementally; the latter is presented. Scenes
+          1-8 were rendered in 512x512 without anti-aliasing on. Scene 9,
+          however, was rendered in 1024x1024 with 8x AA sampling per pixel.
         </p>
 
         <div class="project-img-group">
@@ -429,16 +429,24 @@
 
         <h2 id="threading">Multithreading & Render Optimization</h2>
         <p>
-          If you think about the ray tracing algorithm, it is doing a lot of
-          work in series: iterate over each pixel, shoot a ray, recursively
-          bounce more if an object is reflective or not, etc.
+          The ray tracing algorithm performs a lot of work in series: iterate
+          over all pixels, send rays that may even recursively spawn more rays,
+          etc... It is a very <strong>computationally expensive</strong>
+          process, especially for high resolution images where \(rays \times
+          width \times height\) grows rapidly.
         </p>
 
         <p>
-          Because this work for one pixel is independent of another, concurrency
-          challenges are minimized - and parallelization is a natural thought. I
-          used <strong>std::thread</strong> to split up the work into chunks,
-          and join them at the end.
+          Yet, this work for one pixel is independent of another; concurrency is
+          not a problem, and this nature lends ray tracing to parallelization.
+          With some simple changes, I was able to leverage
+          <a
+            href="https://en.cppreference.com/w/cpp/thread/thread"
+            target="_blank"
+            >std::thread</a
+          >
+          to split up the processing for groups of pixels into
+          <strong>chunks</strong>, and join them at the end.
         </p>
 
         <p>
@@ -525,29 +533,35 @@
         </table>
 
         <p>
-          This improvement was not just to look at the numbers. Without
-          implementing multithreading, I would not have been able to rapidly
-          develop and render these scenes in a reasonable amount of time with my
-          other coursework. This was a pretty exciting use of std::thread back
-          from my systems courses (and at the time, Operating Systems).
+          Adding a timer with
+          <a href="https://en.cppreference.com/w/cpp/chrono" target="_blank"
+            >std::chrono</a
+          >
+          early on was one of the cooler parts of working on this project.
+          <strong>However, it was more than premature optimization</strong>;
+          without introducing parallelization, I would not have been able to
+          rapidly develop and render these scenes in time with my other
+          coursework and responsibilities. Really nice to see prior knowledge
+          from system courses (and at the time, Operating Systems) come into
+          play.
         </p>
 
         <h2 id="bounding-volumes">Bounding Volumes</h2>
         <p>
-          It is notable that scenes 6, 7, and 9 are outliers for time
-          comparatively speaking; this is because the use of a mesh (the
+          Comparatively speaking, scenes 6, 7, and 9 are clear outliers in
+          render time. This is because the use of a mesh (the
           <a href="https://en.wikipedia.org/wiki/Stanford_bunny" target="_blank"
             >Stanford bunny</a
-          >), which is actually a
-          <strong>collection of very many triangles</strong>. This is completely
-          different from other shapes, which were overloaded with an
+          > for these scenes), which is actually a
+          <strong>collection of very many triangles</strong>. This "shape" is
+          completely different from other shapes, which were overloaded with an
           intersection function called once for that shape.
         </p>
 
         <p>
-          For a "mesh" shape, your intersection function must know if a ray
-          intersected with any of the triangles that reside within the mesh. The
-          issue then becomes:
+          For a "mesh" shape, to determine if a ray intersects with the shape,
+          you must check if it intersected with any of the triangles residing
+          within the mesh. Problematically,
           <strong
             >we must always perform a linear search, iterating over every single
             triangle</strong
@@ -555,10 +569,11 @@
         </p>
         <p>
           Given that the bunny has 4968 triangles, and we have \(1024^2\) pixels
-          / rays, we have to do \(1024^2 * 4968\) checks.
+          or rays, we have to do \(1024^2 * 4968\) checks in the best case (no
+          reflections).
           <strong>One check per ray, for every single triangle</strong>. This
-          brings up the minimum bounding box problem, which is an entire
-          different beast of its own.
+          brings up the minimum bounding box problem, which is a different beast
+          entirely.
         </p>
 
         <div class="project-img-container">
@@ -573,10 +588,20 @@
         </div>
 
         <p>
-          The simplest way to resolve this was by implementing a simple bounding
-          sphere - if it intersects with that sphere,
-          <strong>only then should we iterate</strong>. Because I did not
-          implement a more advanced bounding volume techniques, (i.e.
+          The main idea behind bounding volumes is to encapsulate a complex
+          shape with a simpler one, which requires much less computation in the
+          intersection test.
+          <strong
+            >If a ray doesn't even hit the bounding volume, then you certainly
+            won't intersect with the mesh</strong
+          >, so no need to perform the costly loop.
+        </p>
+
+        <p>
+          Using a simple bounding sphere was sufficient for bringing down render
+          time exponentially, but it is not the most efficient. Because I didn't
+          research and implement a more advanced bounding volume technique,
+          (i.e.
           <a href="https://en.wikipedia.org/wiki/Bounding_volume_hierarchy"
             >BVH</a
           >), the bunny was a limiting factor in render time for those scenes.
@@ -585,15 +610,15 @@
         <h2 id="anti-aliasing">Anti-Aliasing</h2>
         <p>
           Throughout this writing I have mentioned the idea of shooting a ray
-          through a pixel or
-          <strong>through the "center" of the pixel</strong>. This is what
-          normal ray tracing without anti-aliasing would look like.
+          through a pixel or through
+          <strong>the "center" of the pixel</strong>. This is what normal ray
+          tracing without anti-aliasing does.
         </p>
         <p>
           Anti-aliasing is described as the process of
           <strong>removing jagged edges along a shape's border</strong> that
           exist because we discretely map each pixel to one color from the
-          scene. This does not handle differentiating the last pixel of a
+          scene. This does a poor job at handling differentiating the last pixel of a
           watermelon from the blue wall behind it.
         </p>
 
@@ -608,13 +633,14 @@
         </div>
 
         <p>
-          Instead, what if we argued the color for a
+          Instead, what if we argued the color for a pixel should be 
           <strong
-            >pixel is the weighted average of multiple rays that pass through
+            >the weighted average of multiple rays that pass through
             the pixel?</strong
           >
-          This is the fundamental idea behind this anti-aliasing - get a
-          <strong>more accurate representation of a pixel</strong>.
+          This is the fundamental idea behind this anti-aliasing - sampling
+          a pixel with multiple rays to get a
+          <strong>more accurate representation of its color</strong>.
         </p>
 
         <div class="project-img-container">
@@ -631,8 +657,8 @@
         </div>
 
         <p>
-          As far as where you should shoot the now increased rays per pixel, I
-          chose to do it evenly throughout the pixel, but you can also do it
+          As far as where you should shoot the now increased rays within a pixel, I
+          chose to do it evenly throughout the pixel, but you can actually also do it
           completely randomly - the results are surprisingly good...
         </p>
 

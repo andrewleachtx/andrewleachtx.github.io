@@ -530,11 +530,25 @@ article .icon {
 }
 
 .projects-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 850px;
   margin: 4rem auto;
+}
+
+.projects-card.pinned {
+  border: 2px solid #ffd700;
+  position: relative;
+}
+
+.icon-pin {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  height: 3rem;
 }
 
 .projects-card {
@@ -758,7 +772,7 @@ footer p {
   border-radius: 15px;
 }
 
-.project h2, h3, h4 {
+.project h2, h4 {
   align-self: flex-start;
   text-align: left;
 }
