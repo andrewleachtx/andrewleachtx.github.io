@@ -14,7 +14,7 @@ const projects = [
     date: "January 2024",
     timeframe: "1.5 weeks",
     readtime: "10 minute read",
-    image: "../projects/rasterizer/assets/scene.png",
+    image: "../projects/rasterizer/assets/shenrons.png",
     link: "../projects/rasterizer/rasterizer.html",
     desc: "C++ rasterizer from coordinate data to image. Showcases BCC interpolation, z-buffers, lighting, and mesh transforms.",
     pinned: false,
