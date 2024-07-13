@@ -566,6 +566,7 @@ article .icon {
 }
 
 .projects-card a {
+  position: relative;
   display: flex;
   align-items: flex-start;
   padding: 1rem;
@@ -606,6 +607,17 @@ article .icon {
   color: #666;
   margin-top: auto;
   margin-bottom: 0.5rem;
+}
+
+.projects-readtime {
+  font-size: 1.25rem;
+  color: #666;
+  font-style: italic;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  margin-right: 16px;
+  margin-bottom: 16px;
 }
 
 /* CONTACT INFO */
