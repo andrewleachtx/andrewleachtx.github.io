@@ -814,6 +814,22 @@ footer p {
   padding-left: 3rem;
 }
 
+code {
+  font-family: Monaco, monospace;
+  background-color: #eee;
+  padding: 0.2em;
+  letter-spacing: -0.05em;
+  word-break: normal;
+}
+
+.project ol {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  gap: 0.5rem;
+  padding-left: 3rem;
+}
+
 /* TABLES */
 .performance-table {
   width: 100%;

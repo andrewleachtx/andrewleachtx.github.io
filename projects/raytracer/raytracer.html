@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Andrew Leach | Raytracing</title>
-    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../assets/favicon.png" type="image/x-icon" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../../style.css" />
@@ -82,6 +82,9 @@
         <a href="#threading">Threading & Optimizations</a>
         <a href="#bounding-volumes">Bounding Volume Problem</a>
         <a href="#anti-aliasing">Anti-Aliasing</a>
+        <a href="#csg">Constructive Solid Geometry</a>
+        <a href="#future">Future & Improvements</a>
+        <a href="#credits">Thanks & Credits</a>
       </div>
 
       <section id="raytracer" class="project">
@@ -152,7 +155,9 @@
           There is a lot of rasterization lore that is tempting to dive into,
           but lets assume you've already read up on it (hopefully soon I can
           write up docs for my
-          <a href="../../pages/projects.html">rasterizer project</a>).
+          <a href="../../pages/projects.html" target="_blank"
+            >rasterizer project</a
+          >).
         </p>
 
         <h2 id="what-is-raytracing">Ray Tracing In 3 Steps</h2>
@@ -553,7 +558,8 @@
           render time. This is because the use of a mesh (the
           <a href="https://en.wikipedia.org/wiki/Stanford_bunny" target="_blank"
             >Stanford bunny</a
-          > for these scenes), which is actually a
+          >
+          for these scenes), which is actually a
           <strong>collection of very many triangles</strong>. This "shape" is
           completely different from other shapes, which were overloaded with an
           intersection function called once for that shape.
@@ -619,8 +625,8 @@
           Anti-aliasing is described as the process of
           <strong>removing jagged edges along a shape's border</strong> that
           exist because we discretely map each pixel to one color from the
-          scene. This does a poor job at handling differentiating the last pixel of a
-          watermelon from the blue wall behind it.
+          scene. This does a poor job at handling differentiating the last pixel
+          of a watermelon from the blue wall behind it.
         </p>
 
         <div class="project-img-container">
@@ -634,13 +640,13 @@
         </div>
 
         <p>
-          Instead, what if we argued the color for a pixel should be 
+          Instead, what if we argued the color for a pixel should be
           <strong
-            >the weighted average of multiple rays that pass through
-            the pixel?</strong
+            >the weighted average of multiple rays that pass through the
+            pixel?</strong
           >
-          This is the fundamental idea behind this anti-aliasing - sampling
-          a pixel with multiple rays to get a
+          This is the fundamental idea behind this anti-aliasing - sampling a
+          pixel with multiple rays to get a
           <strong>more accurate representation of its color</strong>.
         </p>
 
@@ -658,17 +664,284 @@
         </div>
 
         <p>
-          As far as where you should shoot the now increased rays within a pixel, I
-          chose to do it evenly throughout the pixel, but you can actually also do it
-          completely randomly - the results are surprisingly good...
+          As far as where you should shoot the now increased rays within a
+          pixel, I chose to do it evenly throughout the pixel, but you can
+          actually also do it completely randomly - the results are surprisingly
+          good...
         </p>
 
-        <h2>Constructive Solid Geometry</h2>
-        <p>...tbd</p>
-        <h2>Future</h2>
-        <p>...tbd</p>
-        <h2>Credits</h2>
-        <p>...tbd</p>
+        <h2 id="csg">Constructive Solid Geometry</h2>
+        <div class="project-img-container">
+          <img
+            src="./assets/ybox.png"
+            alt="Yellow Box"
+            class="project-img-scene"
+            style="width: 100%; height: 250px"
+          />
+          <div>Box with negative sphere</div>
+        </div>
+
+        <p>
+          This is probably the most prominently <em>weird</em> part of this
+          scene. It is clear what is going on here, but how is it possible?
+          Well, there is a "box" shape with even sides, and inside that box is a
+          sphere.
+        </p>
+
+        <p>
+          But it is not any normal sphere like ones prior - it is one I denoted
+          in my code as a "ShapeType::NEGATIVE" sphere. When my ray tracer sends
+          a ray that contacts with any object that is of enum type "NEGATIVE",
+          it
+          <strong>effectively teleports through it</strong>.
+        </p>
+
+        <p>
+          The reason I say <strong>effectively</strong>, is because it is a
+          little weirder than that. What really happens is, the eye shoots a
+          ray, it intersects closest at the <strong>entry</strong> point of the
+          sphere, and it creates a new ray a <em>bit</em> further forward inside
+          of my sphere to get the exit point of the sphere.
+        </p>
+
+        <p>
+          We want the ray to basically ignore anything happening from the entry
+          to the exit point of the negative shape. Here is a beautiful diagram
+          of that occurring.
+        </p>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/csgdemo.png"
+            alt="CSG Diagram"
+            class=""
+            style="width: 100%; height: 350px"
+          />
+          <div>
+            A beautiful diagram articulating the inner workings of my CSG
+            implementation
+          </div>
+        </div>
+
+        <p>
+          So, the ray enters the negative sphere. In theory, it no longer
+          exists; it cannot <strong>hit</strong> anything until it exits the
+          sphere. As soon as it exits, however, it should interact with the
+          first instance of a shape it can find. This creates the sphere imprint
+          in the green cube of this image:
+        </p>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/gbox.png"
+            alt="Green Box"
+            class="project-img-scene"
+            style="width: 200px; height: auto"
+          />
+          Box with negative sphere and intersection
+        </div>
+
+        <p>
+          To make my code support that idea, I would have had to refactor much
+          of my code - mainly because it did not return the
+          <strong>Hit()</strong> at the exit of the shape; only the enter. So
+          instead of changing all of the code, I decided to create a new ray
+          with an origin <strong>slightly</strong> further in the same direction
+          of the original collision, and shoot that ray.
+        </p>
+
+        <p>
+          Once that ray inevitably reached the exit of the sphere, there would
+          be a hit! This hit was technically an "entrance" hit, but nonetheless
+          it gave me the necessary data to create <strong>another</strong> new
+          ray that would tell me what <em>actual</em> object lies on the other
+          end of the negative shape, be it a box, ellipsoid, real sphere, etc...
+        </p>
+
+        <p>
+          Perhaps not the most planned or systematic means of achieving
+          constructive solid geometry, but I was shocked the idea worked - and
+          consequently it created some cool effects nonetheless.
+        </p>
+
+        <h2 id="future">Future & Improvements</h2>
+        <p>
+          Here is a list of some goals I wanted to achieve for this project, but
+          was unable to achieve to respect other obligations and course volume.
+        </p>
+
+        <ol>
+          <li>
+            Dynamic multithreading for certain use cases, i.e. mesh and triangle
+            intersections
+            <ol>
+              <li>
+                I reduced thread count in main and gave some to the triangle
+                intersection code, but the overhead of creating threads for
+                <code>MAX_THREADS / TRIANGLES</code> for each compute call is
+                very expensive.
+              </li>
+              <li>
+                I want to implement a producer worker thread pool that
+                constructs these threads in a manner that optimizes the # of
+                threads in scenes that are aware of many mesh instances.
+              </li>
+            </ol>
+          </li>
+          <li>
+            More robust CSG implementation
+            <ol>
+              <li>
+                I think my implementation works based on my own theory that
+                hitting a "negative" shape teleports you through the negative
+                shape, but I think overloaded new shapes that meaningfully and
+                recursively join, subtract, or intersect would be a lot more
+                compartmentalized.
+              </li>
+            </ol>
+          </li>
+          <li>
+            Cook torrance & sampling of normals
+            <ol>
+              <li>
+                I think Monte Carlo falls under this, but I want to learn how
+                you can estimate surface material based on random distribution
+                of normals as you hit the ground.
+              </li>
+            </ol>
+          </li>
+          <li>
+            More efficient intersection (KD-trees, BSP-trees, etc...)
+            <ol>
+              <li>
+                I have heard of KD trees and wonder how they work. I didn't try
+                it for this assignment but think it would be cool to better
+                contain the shape before making the expensive loop through all
+                triangles in a mesh.
+              </li>
+              <li>
+                This would in tandem with <code>1</code> do a lot for
+                improvement of performance.
+              </li>
+            </ol>
+          </li>
+          <li>
+            Skyboxes with texture mapping
+            <ol>
+              <li>
+                I really want to do skyboxes. I have seen them in games and they
+                look cool.
+              </li>
+            </ol>
+          </li>
+          <li>
+            I want to add the idea of volumetric rays or godrays, might be Monte
+            Carlo
+            <ol>
+              <li>
+                I have explored this thought of dust particles which are
+                attenuated by a light source, at the cost of brute force.
+                Obviously I need to google it...
+              </li>
+            </ol>
+          </li>
+          <li>
+            <del>
+              Document all of my struggles! I need to go through my campuswire
+              posts and make an archive of the journey here because I can't
+              believe the destination.
+            </del>
+            <strong>Done</strong>
+          </li>
+        </ol>
+
+        <h2 id="credits">Thanks & Credits</h2>
+        <ol>
+          <li>
+            <a
+              href="https://people.engr.tamu.edu/sueda/index.html"
+              target="_blank"
+              >Dr. Shinjiro Sueda</a
+            >
+          </li>
+          <li>
+            Michael Stewart's ray tracing
+            <a
+              href="https://michaelstewart2.github.io/RayTeaching1.1/index.html"
+              target="_blank"
+              >visualizer</a
+            >
+          </li>
+          <li>
+            My own notes & past code (including systems courses for threading),
+            lecture slides.
+          </li>
+          <li>
+            <a href="https://www.geeksforgeeks.org/cpp-polymorphism/?ref=lbp"
+              >C++ Polymorphism</a
+            >
+          </li>
+          <li>
+            <a href="https://www.geeksforgeeks.org/virtual-function-cpp/"
+              >Virtual Functions in C++</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://glm.g-truc.net/0.9.4/api/a00129.html#ga99b1ce602a02833646e5077345858da4"
+              >glm::clamp</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.geeksforgeeks.org/measure-execution-time-function-cpp/"
+              >std::chrono</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://fileadmin.cs.lth.se/cs/Personal/Tomas_Akenine-Moller/raytri/"
+              >raytri.c</a
+            >
+          </li>
+          <li>
+            <a href="https://www.geeksforgeeks.org/multithreading-in-cpp/"
+              >Threading</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.geeksforgeeks.org/mutex-lock-for-linux-thread-synchronization/"
+              >Mutexing</a
+            >
+          </li>
+          <li>
+            <a href="https://en.cppreference.com/w/cpp/thread/thread"
+              >std::thread</a
+            >
+          </li>
+          <li>
+            <a href="https://en.cppreference.com/w/cpp/thread/mutex"
+              >std::mutex</a
+            >
+          </li>
+          <li>
+            <a href="https://tavianator.com/2011/ray_box.html"
+              >Ray-Box Intersections</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://web.cse.ohio-state.edu/~parent.1/classes/681/Lectures/19.RayTracingCSG.pdf"
+              >Constructive Solid Geometry Theory Slides</a
+            >
+          </li>
+          <li>
+            <a href="https://www.codecademy.com/resources/docs/markdown/tables"
+              >Markdown Tables</a
+            >
+          </li>
+        </ol>
       </section>
 
       <footer>

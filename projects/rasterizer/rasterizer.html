@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Andrew Leach | Rasterizer</title>
-    <link rel="icon" href="../assets/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="../../style.css" />
@@ -75,16 +75,64 @@
 
       <div class="project-sidebar">
         <a href="#rasterization">Rasterization</a>
+        <a href="#triangles">Triangles Are OP</a>
       </div>
 
       <section id="rasterization" class="project">
         <h3 class="project-title">Rasterization</h3>
 
         <p>
-          Rasterization is the beginning of my graphics journey.
-        </p>  
+          Almost every 3D game or application we've played was using
+          <strong>rasterization</strong> behind the scenes.
+        </p>
 
+        <p>
+          If a <strong>raster</strong> is a group of pixels on a 2D grid or
+          image, then <strong>rasterization</strong> is the process by which we
+          convert 3D shapes (composed of triangles) into pixels on your 2D
+          screen.
+        </p>
+
+        <p>Why compose objects of triangles though?</p>
+
+        <h2 id="triangles">Triangles Are OP</h2>
+
+        <p>
+          If you wanted to estimate a 3D shape or surface as composed of a bunch
+          of smaller polygons, you are allowed to use anything that encloses 2D
+          area, right? In other words, as long as there are >= 3 points for the
+          shape, you can use it.
+        </p>
+
+        <p>
+          Naturally, the first to meet that requirement is the triangle. Then
+          the square or "quad". However, the triangle is the simplest shape
+          required to enclose a 2D area - which makes it perform great.
+        </p>
+
+        <p>
+          Of course, that is to say <strong>performance</strong> is
+          <em>usually</em> the goal, at least for real-time rendering in video
+          games or other contexts. Now, if creating perfect images and scenes
+          (prerendered) is your goal,
+          <a href="../raytracer/raytracer.html" target="_blank">ray tracing</a> is your friend.
+        </p>
+
+        <h2 id="images">Images</h2>
         <p>...tbd</p>
+        <!-- <p>Here is some exemplification of the process of rasterization:</p> -->
+
+        <!-- <div class="project-img-group">
+          <div class="project-img-list">
+            <img
+              src="./assets/scene1.png"
+              alt="Scene 1"
+              class="project-img-scene"
+            />
+            Idk
+          </div>
+        </div> -->
+
         <h2>Future</h2>
         <p>...tbd</p>
         <h2>Credits</h2>
