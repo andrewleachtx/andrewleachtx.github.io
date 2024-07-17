@@ -16,10 +16,6 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
-
-    <!-- For Pretty Code -->
-    <link rel="stylesheet" href="../../prism.css" />
-    <script src="../../prism.js"></script>
   </head>
 
   <body>
@@ -75,7 +71,10 @@
 
       <div class="project-sidebar">
         <a href="#rasterization">Rasterization</a>
-        <a href="#triangles">Triangles Are OP</a>
+        <a href="#triangles">The Cake Is a Lie</a>
+        <a href="#scenes">Scenes</a>
+        <a href="#favorite-scenes">Personal Favorites</a>
+        <a href="#credits">Thanks & Credits</a>
       </div>
 
       <section id="rasterization" class="project">
@@ -95,19 +94,51 @@
 
         <p>Why compose objects of triangles though?</p>
 
-        <h2 id="triangles">Triangles Are OP</h2>
+        <h2 id="triangles">The Cake Is a Lie</h2>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/alltriangles.png"
+            alt="Wait, it's all triangles?"
+            class="project-img"
+            style="width: 85%; height: auto"
+          />
+        </div>
 
         <p>
-          If you wanted to estimate a 3D shape or surface as composed of a bunch
-          of smaller polygons, you are allowed to use anything that encloses 2D
-          area, right? In other words, as long as there are >= 3 points for the
-          shape, you can use it.
+          <a
+            href="https://en.wikipedia.org/wiki/The_cake_is_a_lie"
+            target="_blank"
+            >The cake is a lie</a
+          >. Everything you are looking at is composed of triangles. Take a look
+          at <a href="https://minecraft.net" target="_blank">Minecraft</a> for
+          example. A cube is 6 squares or faces, and one of those squares is
+          <strong>two triangles</strong>.
         </p>
 
         <p>
-          Naturally, the first to meet that requirement is the triangle. Then
-          the square or "quad". However, the triangle is the simplest shape
-          required to enclose a 2D area - which makes it perform great.
+          Even for more complex shapes, like a sphere, we can approximate it
+          with a bunch of triangles. The degree of precision necessary to
+          represent a mesh can then be described as <strong>low-poly</strong> or
+          <strong>high-poly</strong>.
+        </p>
+
+        <div class="project-img-container">
+          <img
+            src="./assets/cybertruck.png"
+            alt="Cybertruck"
+            class="project-img"
+            style="width: 75%; height: auto"
+          />
+          <div>Tesla Cybertruck (low-poly)</div>
+        </div>
+
+        <p>
+          Triangles require the least amount of points or coordinates to enclose
+          a 2D area, which makes them very simple. Also, they lie on a single
+          plane - making them play nice with math. And the GPU does
+          <strong>a lot of math</strong>. We want to minimize the overhead and
+          complexity of the calculations we do, to increase performance.
         </p>
 
         <p>
@@ -115,28 +146,171 @@
           <em>usually</em> the goal, at least for real-time rendering in video
           games or other contexts. Now, if creating perfect images and scenes
           (prerendered) is your goal,
-          <a href="../raytracer/raytracer.html" target="_blank">ray tracing</a> is your friend.
+          <a href="../raytracer/raytracer.html" target="_blank">ray tracing</a>
+          is your friend.
         </p>
 
-        <h2 id="images">Images</h2>
-        <p>...tbd</p>
-        <!-- <p>Here is some exemplification of the process of rasterization:</p> -->
+        <h2 id="scenes">Scenes</h2>
+        <p>
+          Attached is my progression of a
+          <a href="https://en.wikipedia.org/wiki/Stanford_bunny" target="_blank"
+            >Stanford bunny</a
+          >
+          (bunny.obj) mesh from coordinate data to transformed image output:
+        </p>
 
-        <!-- <div class="project-img-group">
+        <div class="project-img-group">
           <div class="project-img-list">
             <img
-              src="./assets/scene1.png"
-              alt="Scene 1"
+              src="./assets/task1_bunny.png"
+              alt="Task 1 Bunny"
               class="project-img-scene"
             />
-            Idk
+            Bounding box area and randomized colors
           </div>
-        </div> -->
+
+          <div class="project-img-list">
+            <img
+              src="./assets/task2_bunny.png"
+              alt="Task 2 Bunny"
+              class="project-img-scene"
+            />
+            Barycentric test to determine pixels inside/outside each triangle
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/task3_bunny.png"
+              alt="Task 3 Bunny"
+              class="project-img-scene"
+            />
+            Per-vertex color interpolation (based on barycentric coords)
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/task4_bunny.png"
+              alt="Task 4 Bunny"
+              class="project-img-scene"
+            />
+            Object (not image) linear interpolation with y value
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/task5_bunny.png"
+              alt="Task 5 Bunny"
+              class="project-img-scene"
+            />
+            Z-buffering to containerize depth and prevent overlap
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/task6_bunny.png"
+              alt="Task 6 Bunny"
+              class="project-img-scene"
+            />
+            Coloring with vertex normals
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/task7_bunny.png"
+              alt="Task 7 Bunny"
+              class="project-img-scene"
+            />
+            Lighting coloring w/ normals and light - \( max(\hat{l} \cdot
+            \hat{n}, 0) \)
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/task8_bunny.png"
+              alt="Task 8 Bunny"
+              class="project-img-scene"
+            />
+            Rotation
+          </div>
+        </div>
+
+        <h2 id="favorite-scenes">Personal Favorites</h2>
+        <div class="project-img-group">
+          <div class="project-img-list">
+            <img
+              src="./assets/rgb_shenron.png"
+              alt="RGB Shenron"
+              class="project-img-scene"
+            />
+            <div>
+              RGB Shenron (I did not create this,
+              <a href="https://than.gs/m/987921" target="_blank">here</a>)
+            </div>
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/shenron_rotated.png"
+              alt="Rotated Shenron"
+              class="project-img-scene"
+            />
+            Rotation
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/small_bunny.png"
+              alt="Small Bunny"
+              class="project-img-scene"
+            />
+            16x16 bunny (terraria reference?)
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/purple_bunny.png"
+              alt="bbb2e9 Bunny"
+              class="project-img-scene"
+            />
+            <div>4k bbb2e9 bunny</div>
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/evil_sphere.png"
+              alt="Evil sphere"
+              class="project-img-scene"
+            />
+            Evil sphere (artifact) caused from this bug:
+            <code style="width: max-content">
+              Color Color::operator+(const Color&amp; other) const {<br />&nbsp;&nbsp;return
+              Color(static_cast&lt;uint8_t&gt;(r + other.r),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static_cast&lt;uint8_t&gt;(g
+              + other.g),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static_cast&lt;uint8_t&gt;(b
+              + other.b));<br />}
+            </code>
+            It took 5 hours to find this one (look at r, g, b colors)!
+          </div>
+        </div>
 
         <h2>Future</h2>
-        <p>...tbd</p>
-        <h2>Credits</h2>
-        <p>...tbd</p>
+        <p>
+          I do not currently have any plans to modify any of my code or logic
+          for this project :)
+        </p>
+        <h2 id="credits">Thanks & Credits</h2>
+        <ol>
+          <li>
+            <a
+              href="https://people.engr.tamu.edu/sueda/index.html"
+              target="_blank"
+              >Dr. Shinjiro Sueda</a
+            >
+          </li>
+          <li>
+            CS441 (computer graphics) lecture slides, notes and project
+            directions.
+          </li>
+        </ol>
       </section>
 
       <footer>

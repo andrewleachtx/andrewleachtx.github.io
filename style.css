@@ -768,6 +768,7 @@ footer p {
   display: flex;
   flex-direction: column;
   justify-content: start;
+  text-align: center;
   align-items: center;
   margin: 0 auto;
   font-size: 1rem;

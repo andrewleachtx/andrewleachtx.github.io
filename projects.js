@@ -3,7 +3,7 @@ const projects = [
     title: "Ray Tracer",
     date: "April 2024",
     timeframe: "1 month",
-    readtime: "10 minute read",
+    readtime: "15 minute read",
     image: "../projects/raytracer/assets/scene.png",
     link: "../projects/raytracer/raytracer.html",
     desc: "C++ ray tracing engine (from scratch) featuring constructive solid geometry, anti-aliasing, multithreading, and 9 scenes.",
@@ -12,12 +12,21 @@ const projects = [
   {
     title: "Rasterizer",
     date: "January 2024",
-    timeframe: "1.5 weeks",
-    readtime: "10 minute read",
+    timeframe: "2 weeks",
+    readtime: "5 minute read",
     image: "../projects/rasterizer/assets/shenrons.png",
     link: "../projects/rasterizer/rasterizer.html",
     desc: "C++ rasterizer from coordinate data to image. Showcases BCC interpolation, z-buffers, lighting, and mesh transforms.",
     pinned: false,
+  },
+  {
+    title: "OpenGL Object Shaders",
+    date: "February 2024",
+    timeframe: "1 week",
+    readtime: "",
+    link: "../projects/objectshaders/objshaders.html",
+    image: "../projects/objectshaders/assets/cel_jade.gif",
+    desc: "C++ OpenGL shaders featuring Blinn-Phong (multiple materials), silhouette, and cel shading with variable time and lighting."
   },
   {
     title: "Personal Website",
