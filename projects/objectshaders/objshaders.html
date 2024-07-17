@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Andrew Leach | Rasterizer</title>
+    <title>Andrew Leach | OpenGL Shaders</title>
     <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" />
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -70,232 +70,97 @@
       </nav>
 
       <div class="project-sidebar">
-        <a href="#rasterization">Rasterization</a>
-        <a href="#triangles">The Cake Is a Lie</a>
-        <a href="#images">Images</a>
-        <a href="#favorite-images">Personal Favorites</a>
+        <a href="#objshading">OpenGL Object Shading</a>
+        <a href="#opengl">OpenGL Is Cool</a>
+        <a href="#scenes">Scenes</a>
         <a href="#credits">Thanks & Credits</a>
       </div>
 
-      <section id="rasterization" class="project">
-        <h3 class="project-title">Rasterization</h3>
+      <section id="objshading" class="project">
+        <h3 class="project-title">OpenGL Object Shading</h3>
+        <p>...tbd</p>
+        <h2 id="opengl">OpenGL Is Cool</h2>
+        <p>...tbd</p>
+        <h2 id="vertex-shader">Vertex Shader</h2>
+        <p>...tbd</p>
+        <h2 id="fragment-shader">Fragment Shader</h2>
+        <p>...tbd</p>
 
-        <p>
-          Almost every 3D game or application we've played was using
-          <strong>rasterization</strong> behind the scenes.
-        </p>
-
-        <p>
-          If a <strong>raster</strong> is a group of pixels on a 2D grid or
-          image, then <strong>rasterization</strong> is the process by which we
-          convert 3D shapes (composed of triangles) into pixels on your 2D
-          screen.
-        </p>
-
-        <p>Why compose objects of triangles though?</p>
-
-        <h2 id="triangles">The Cake Is a Lie</h2>
-
-        <div class="project-img-container">
-          <img
-            src="./assets/alltriangles.png"
-            alt="Wait, it's all triangles?"
-            class="project-img"
-            style="width: 85%; height: auto"
-          />
-        </div>
-
-        <p>
-          <a
-            href="https://en.wikipedia.org/wiki/The_cake_is_a_lie"
-            target="_blank"
-            >The cake is a lie</a
-          >. Everything you are looking at is composed of triangles. Take a look
-          at <a href="https://minecraft.net" target="_blank">Minecraft</a> for
-          example. A cube is 6 squares or faces, and one of those squares is
-          <strong>two triangles</strong>.
-        </p>
-
-        <p>
-          Even for more complex shapes, like a sphere, we can approximate it
-          with a bunch of triangles. The degree of precision necessary to
-          represent a mesh can then be described as <strong>low-poly</strong> or
-          <strong>high-poly</strong>.
-        </p>
-
-        <div class="project-img-container">
-          <img
-            src="./assets/cybertruck.png"
-            alt="Cybertruck"
-            class="project-img"
-            style="width: 75%; height: auto"
-          />
-          <div>Tesla Cybertruck (low-poly)</div>
-        </div>
-
-        <p>
-          Triangles require the least amount of points or coordinates to enclose
-          a 2D area, which makes them very simple. Also, they lie on a single
-          plane - making them play nice with math. And the GPU does
-          <strong>a lot of math</strong>. We want to minimize the overhead and
-          complexity of the calculations we do, to increase performance.
-        </p>
-
-        <p>
-          Of course, that is to say <strong>performance</strong> is
-          <em>usually</em> the goal, at least for real-time rendering in video
-          games or other contexts. Now, if creating perfect images and scenes
-          (prerendered) is your goal,
-          <a href="../raytracer/raytracer.html" target="_blank">ray tracing</a>
-          is your friend.
-        </p>
-
-        <h2 id="images">Images</h2>
-        <p>
-          Attached is my progression of a
-          <a href="https://en.wikipedia.org/wiki/Stanford_bunny" target="_blank"
-            >Stanford bunny</a
-          >
-          (bunny.obj) mesh from coordinate data to transformed image output:
-        </p>
-
+        <h2 id="scenes">Scenes</h2>
         <div class="project-img-group">
           <div class="project-img-list">
             <img
-              src="./assets/task1_bunny.png"
-              alt="Task 1 Bunny"
+              src="./assets/cel_jade.gif"
+              alt="Jade Cel Shading Gif"
               class="project-img-scene"
             />
-            Bounding box area and randomized colors
+            Jade with magenta specular modified fragment coloring, animation,
+            rotation, shear
           </div>
 
           <div class="project-img-list">
             <img
-              src="./assets/task2_bunny.png"
-              alt="Task 2 Bunny"
+              src="./assets/mat_clay.png"
+              alt="Clay Material"
               class="project-img-scene"
             />
-            Barycentric test to determine pixels inside/outside each triangle
+            Clay-like glossy material
           </div>
 
           <div class="project-img-list">
             <img
-              src="./assets/task3_bunny.png"
-              alt="Task 3 Bunny"
+              src="./assets/mat_blue.png"
+              alt="Blue Material"
               class="project-img-scene"
             />
-            Per-vertex color interpolation (based on barycentric coords)
+            Deep, dull toy soldier like blue material
           </div>
 
           <div class="project-img-list">
             <img
-              src="./assets/task4_bunny.png"
-              alt="Task 4 Bunny"
+              src="./assets/mat_obsidian.png"
+              alt="Obsidian Material"
               class="project-img-scene"
             />
-            Object (not image) linear interpolation with y value
+            Matte obisidian colored material
           </div>
 
           <div class="project-img-list">
             <img
-              src="./assets/task5_bunny.png"
-              alt="Task 5 Bunny"
-              class="project-img-scene"
-            />
-            Z-buffering to containerize depth and prevent overlap
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/task6_bunny.png"
-              alt="Task 6 Bunny"
-              class="project-img-scene"
-            />
-            Coloring with vertex normals
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/task7_bunny.png"
-              alt="Task 7 Bunny"
-              class="project-img-scene"
-            />
-            Lighting coloring w/ normals and light - \( max(\hat{l} \cdot
-            \hat{n}, 0) \)
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/task8_bunny.png"
-              alt="Task 8 Bunny"
-              class="project-img-scene"
-            />
-            Rotation
-          </div>
-        </div>
-
-        <h2 id="favorite-images">Personal Favorites</h2>
-        <div class="project-img-group">
-          <div class="project-img-list">
-            <img
-              src="./assets/rgb_shenron.png"
-              alt="RGB Shenron"
+              src="./assets/silhouette.gif"
+              alt="Silhouette Gif"
               class="project-img-scene"
             />
             <div>
-              RGB Shenron (I did not create this,
-              <a href="https://than.gs/m/987921" target="_blank">here</a>)
+              Silhouette shader (where \( \left \Vert \hat{n} \cdot \hat{e} <
+              0.3 \right \Vert \))
             </div>
           </div>
 
           <div class="project-img-list">
             <img
-              src="./assets/shenron_rotated.png"
-              alt="Rotated Shenron"
+              src="./assets/light_move.gif"
+              alt="Moving lights gif"
               class="project-img-scene"
             />
-            Rotation
+            <div>Moving lights with blue cel shader</div>
           </div>
 
           <div class="project-img-list">
             <img
-              src="./assets/small_bunny.png"
-              alt="Small Bunny"
+              src="./assets/full_demo.gif"
+              alt="Full demo gif"
               class="project-img-scene"
             />
-            16x16 bunny (terraria reference?)
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/purple_bunny.png"
-              alt="bbb2e9 Bunny"
-              class="project-img-scene"
-            />
-            <div>4k bbb2e9 bunny</div>
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/evil_sphere.png"
-              alt="Evil sphere"
-              class="project-img-scene"
-            />
-            Evil sphere (artifact) caused from this bug:
-            <code style="width: max-content">
-              Color Color::operator+(const Color&amp; other) const {<br />&nbsp;&nbsp;return
-              Color(static_cast&lt;uint8_t&gt;(r + other.r),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static_cast&lt;uint8_t&gt;(g
-              + other.g),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static_cast&lt;uint8_t&gt;(b
-              + other.b));<br />}
-            </code>
-            It took 5 hours to find this one (look at r, g, b colors)!
+            <div>Full demo gif</div>
           </div>
         </div>
 
         <h2>Future</h2>
         <p>
-          I do not currently have any plans to modify any of my code or logic
-          for this project :)
+          I am pretty satisfied - no changes for this <em>specifically</em> -
+          there is something else I want to do with shaders but thats a secret
+          :)
         </p>
         <h2 id="credits">Thanks & Credits</h2>
         <ol>
@@ -309,6 +174,26 @@
           <li>
             CS441 (computer graphics) lecture slides, notes and project
             directions.
+          </li>
+          <li>
+            <a
+              href="https://registry.khronos.org/OpenGL-Refpages/gl4/html/glUniform.xhtml"
+              target="_blank"
+              >OpenGL Uniform Refsheet</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.glfw.org/docs/3.3/input_guide.html#input_key"
+              target="_blank"
+              >GLFW Input Guide</a
+            >,
+            <a href="https://www.glfw.org/docs/3.3/group__keys.html#"
+              >GLFW Keys</a
+            >,
+            <a href="https://www.glfw.org/docs/3.3/group__mods.html"
+              >GLFW Mods</a
+            >
           </li>
         </ol>
       </section>

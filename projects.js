@@ -26,7 +26,7 @@ const projects = [
     readtime: "",
     link: "../projects/objectshaders/objshaders.html",
     image: "../projects/objectshaders/assets/cel_jade.gif",
-    desc: "C++ OpenGL shaders featuring Blinn-Phong (multiple materials), silhouette, and cel shading with variable time and lighting."
+    desc: "C++ OpenGL shaders featuring Blinn-Phong (3+ materials), silhouette, and cel shading with variable time and lighting."
   },
   {
     title: "Personal Website",
