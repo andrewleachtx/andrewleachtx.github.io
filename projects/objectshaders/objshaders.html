@@ -71,20 +71,32 @@
 
       <div class="project-sidebar">
         <a href="#objshading">OpenGL Object Shading</a>
-        <a href="#opengl">OpenGL Is Cool</a>
         <a href="#scenes">Scenes</a>
+        <a href="#pipeline">Rendering Pipeline</a>
         <a href="#credits">Thanks & Credits</a>
       </div>
 
       <section id="objshading" class="project">
         <h3 class="project-title">OpenGL Object Shading</h3>
-        <p>...tbd</p>
-        <h2 id="opengl">OpenGL Is Cool</h2>
-        <p>...tbd</p>
-        <h2 id="vertex-shader">Vertex Shader</h2>
-        <p>...tbd</p>
-        <h2 id="fragment-shader">Fragment Shader</h2>
-        <p>...tbd</p>
+        <p>
+          We can render a 3D/2D graphic onto a static image, as seen in my
+          <a href="../../projects/rasterizer/rasterizer.html" target="_blank"
+            >rasterizer writeup</a
+          >. But what if we want the scene to <strong>move</strong>? What if we
+          want to <strong>interact</strong>
+          with the scene with our own inputs?
+        </p>
+        <p>
+          Open Graphics Library, or OpenGL, is one medium allowing us to render
+          our 2D/3D rasterized graphics, abstracting away various complexities
+          in the rendering pipeline and hardware space.
+        </p>
+        <p>
+          OpenGL, when paired with
+          <a href="https://www.glfw.org/" target="_blank">GLFW</a> allows for us
+          to spin up a quick state machine with C++, giving us control to render
+          shapes, textures, and shaders in real time.
+        </p>
 
         <h2 id="scenes">Scenes</h2>
         <div class="project-img-group">
@@ -155,6 +167,30 @@
             <div>Full demo gif</div>
           </div>
         </div>
+
+        <h2 id="pipeline">Rendering Pipeline</h2>
+        <div class="project-img-container">
+          <img
+            src="./assets/pipeline.png"
+            alt="OpenGL Rendering Pipeline"
+            class="project-img"
+            style="width: 40%; height: auto"
+          />
+          <div>
+            Rendering pipeline, courtesy of
+            <a
+              href="https://people.engr.tamu.edu/sueda/index.html"
+              target="_blank"
+              >Dr. Shinjiro Sueda</a
+            >'s CS441 material.
+          </div>
+        </div>
+
+        <p>...tbd</p>
+        <h2 id="vertex-shader">Vertex Shader</h2>
+        <p>...tbd</p>
+        <h2 id="fragment-shader">Fragment Shader</h2>
+        <p>...tbd</p>
 
         <h2>Future</h2>
         <p>
