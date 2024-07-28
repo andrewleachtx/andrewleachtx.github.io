@@ -17,7 +17,8 @@
         "readtime": "",
         "image": "../projects/freelook/assets/freelook.png",
         "link": "../projects/freelook/freelook.html",
-        "desc": "C++ / OpenGL free-look world with movement, zoomable camera, HUD, minimap, textures, animated objects, and lighting."
+        "desc": "C++ / OpenGL free-look world with movement, zoomable camera, HUD, minimap, textures, animated objects, and lighting.",
+        "pinned": true
       },
       {
         "title": "Rasterizer",

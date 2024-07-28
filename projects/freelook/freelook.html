@@ -128,9 +128,58 @@
 
         <ol>
           <li>
+            <strong>Object instancing</strong> - It is very naive and arguably
+            impossible (on my laptop) to load vertex data for the 100+ shape
+            instances you see on screen. Of the ground objects, only
+            <em>two</em> .obj meshes are actually being loaded, one for the
+            bunny, and one for the teapot. This is possible because all objects
+            share the same mesh data (well, respective to their type), but
+            contain different model transform information.
+          </li>
+          <li>
             <strong>HUD with camera POV frustum</strong> - Toggleable HUD that
             shows a frustum with its own transforms based on zoom level, camera
-            position, and rotation.
+            position, and rotation. Note there are two objects in the top left
+            and right corners, these are rendered independently, and they take
+            advantage of <a href="https://en.wikipedia.org/wiki/Orthographic_projection" target="_blank">orthographic projection</a> properties to guarantee a
+            uniform size regardless of "position".
+          </li>
+          <li>
+            <strong>Randomized attributes</strong> - On each runthrough the
+            objects will be pseudo-randomly generated with different colors,
+            scales, positions, and other details. This is possible by using a
+            seed based on current time to "randomize" the information at
+            runtime.
+          </li>
+          <li>
+            <strong>Free-look camera</strong> - The camera is not locked; it can
+            be moved at all angles as well as zoomed in and out. This is
+            possible by storing <strong>pitch</strong> and
+            <strong>yaw</strong> data that can be updated with mouse events and
+            <a
+              href="https://learnopengl.com/Getting-started/Camera"
+              target="_blank"
+              >glm::lookAt</a
+            >. Additionally, WASD-like input is captured with other event
+            handlers to translate the camera's position in world space.
+          </li>
+          <li>
+            <strong>Transformations with respect to time</strong> - As you can
+            see, objects are shrinking and growing in cyclic patterns. This is
+            possible by using the current time (<a
+              href="https://www.glfw.org/docs/3.0/group__time.html"
+              target="_blank"
+              >glfwGetTime()</a
+            >) along with trig functions to augment scale transformation data
+            slightly over each render call. Also, it is notable that objects are
+            clipped to the ground - this was done by thoughtfully adjusting the
+            Y position based on their scale (move up as grow, down as shrink).
+          </li>
+          <li>
+            <strong>Infinite XZ plane</strong> - The ground resembles an
+            infinite grass texture. This was possible by scaling a massive
+            square rotated parallel to the XZ plane, using GL_REPEAT to repeat
+            (as opposed to stretch) the texture "infinitely" many times.
           </li>
         </ol>
 
