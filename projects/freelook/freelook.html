@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Andrew Leach | Free-Look World</title>
+    <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../mediaqueries.css" />
+
+    <!-- MathJax -->
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+
+  <body>
+    <html>
+      <nav id="desktop-nav">
+        <div class="logo">Andrew D. Leach</div>
+
+        <div>
+          <ul class="nav-links">
+            <li>
+              <a href="../../">
+                <img
+                  src="../../assets/icon-home.svg"
+                  alt="home icon"
+                  class="icon-grow"
+                />
+              </a>
+            </li>
+            <li><a href="../../#about">me</a></li>
+            <li><a href="../../#experience">experience</a></li>
+            <li><a href="../../#contact">contact</a></li>
+            <li><a href="../../pages/projects.html">projects</a></li>
+            <li><a href="../../pages/fun.html">fun</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <nav id="hamburger-nav">
+        <div class="logo">Andrew D. Leach</div>
+        <div class="hamburger-menu">
+          <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="menu-links">
+            <li><a href="../../#about" onclick="toggleMenu()">about</a></li>
+            <li>
+              <a href="../../#experience" onclick="toggleMenu()">experience</a>
+            </li>
+            <li><a href="../../#contact">contact</a></li>
+            <li>
+              <a href="../../pages/projects.html" onclick="toggleMenu()"
+                >projects</a
+              >
+            </li>
+            <li>
+              <a href="../../pages/fun.html" onclick="toggleMenu()">fun</a>
+            </li>
+          </div>
+        </div>
+      </nav>
+
+      <div class="project-sidebar">
+        <a href="#objshading">Free-Look World</a>
+        <a href="#scenes">Scenes</a>
+      </div>
+
+      <section id="objshading" class="project">
+        <h3 class="project-title">Free-Look World</h3>
+
+        <h2 id="scenes">Scenes</h2>
+        <div class="project-img-group">
+          <div>
+            <video width="100%" controls>
+              <source src="./assets/freelook_demo.mp4" type="video/mp4" />
+            </video>
+          </div>
+        </div>
+        <h2>Future</h2>
+        <p>...tbd</p>
+        <h2 id="credits">Thanks & Credits</h2>
+        <ol>
+          <li>
+            <a
+              href="https://people.engr.tamu.edu/sueda/index.html"
+              target="_blank"
+              >Dr. Shinjiro Sueda</a
+            >
+          </li>
+          <li>
+            CS441 (computer graphics) lecture slides, notes and project
+            directions.
+          </li>
+          <li>
+            <a
+              href="https://registry.khronos.org/OpenGL-Refpages/gl4/html/glUniform.xhtml"
+              target="_blank"
+              >OpenGL Uniform Refsheet</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://www.glfw.org/docs/3.3/input_guide.html#input_key"
+              target="_blank"
+              >GLFW Input Guide</a
+            >,
+            <a href="https://www.glfw.org/docs/3.3/group__keys.html#"
+              >GLFW Keys</a
+            >,
+            <a href="https://www.glfw.org/docs/3.3/group__mods.html"
+              >GLFW Mods</a
+            >
+          </li>
+        </ol>
+      </section>
+
+      <footer>
+        <nav>
+          <div class="nav-links-container">
+            <ul class="nav-links">
+              <li>
+                <a href="../../">
+                  <img
+                    src="../../assets/icon-home.svg"
+                    alt="home icon"
+                    class="icon-grow"
+                  />
+                </a>
+              </li>
+              <li><a href="../../#about">me</a></li>
+              <li><a href="../../#experience">experience</a></li>
+              <li><a href="../../#contact">contact</a></li>
+              <li><a href="../../pages/projects.html">projects</a></li>
+              <li><a href="../../pages/fun.html">fun</a></li>
+            </ul>
+          </div>
+        </nav>
+        <p>&#169; 2024 Andrew Leach. All Rights Reserved.</p>
+      </footer>
+
+      <script src="../../script.js" async defer></script>
+    </html>
+  </body>
+</html>

@@ -15,7 +15,9 @@
         "date": "March 2024",
         "timeframe": "2 weeks",
         "readtime": "",
-        "image": "../projects/freelook/assets/freelook.gif"
+        "image": "../projects/freelook/assets/freelook.png",
+        "link": "../projects/freelook/freelook.html",
+        "desc": "C++ / OpenGL free-look world with movement, zoomable camera, HUD, minimap, textures, animated objects, and lighting."
       },
       {
         "title": "Rasterizer",
