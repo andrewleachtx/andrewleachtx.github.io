@@ -72,21 +72,75 @@
       <div class="project-sidebar">
         <a href="#objshading">Free-Look World</a>
         <a href="#scenes">Scenes</a>
+        <a href="#features">Cool Features</a>
+        <a href="#future">Future</a>
+        <a href="#credits">Thanks & Credits</a>
       </div>
 
       <section id="objshading" class="project">
         <h3 class="project-title">Free-Look World</h3>
-
         <h2 id="scenes">Scenes</h2>
         <div class="project-img-group">
-          <div>
-            <video width="100%" controls>
-              <source src="./assets/freelook_demo.mp4" type="video/mp4" />
-            </video>
+          <video width="100%" controls>
+            <source src="./assets/freelook_demo.mp4" type="video/mp4" />
+          </video>
+        </div>
+
+        <div class="project-img-group">
+          <div class="project-img-list">
+            <img
+              src="./assets/close.gif"
+              alt="Close Up View"
+              class="project-img-scene"
+            />
+            <p>Close up view of one object</p>
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/aerial.gif"
+              alt="Aerial View"
+              class="project-img-scene"
+            />
+            <p>Top-down view from air</p>
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/low.gif"
+              alt="Low View"
+              class="project-img-scene"
+            />
+            <p>Objects do not clip through the ground</p>
+          </div>
+
+          <div class="project-img-list">
+            <img
+              src="./assets/walkbyfov.gif"
+              alt="Zoom View"
+              class="project-img-scene"
+            />
+            <p>Walk-through with HUD + frustum enabled</p>
           </div>
         </div>
-        <h2>Future</h2>
-        <p>...tbd</p>
+
+        <h2 id="features">Cool Features</h2>
+
+        <ol>
+          <li>
+            <strong>HUD with camera POV frustum</strong> - Toggleable HUD that
+            shows a frustum with its own transforms based on zoom level, camera
+            position, and rotation.
+          </li>
+        </ol>
+
+        <h2 id="future">Future</h2>
+        <p>
+          Nothing planned for this - although it would be interesting to see
+          some occlusion checking, as objects are comparing eachother to the
+          "sun" (single source of light) independent of eachother. Might involve
+          adding shadow passes.
+        </p>
         <h2 id="credits">Thanks & Credits</h2>
         <ol>
           <li>
@@ -95,6 +149,7 @@
               target="_blank"
               >Dr. Shinjiro Sueda</a
             >
+            & <a href="https://zesch.dev/" target="_blank">Ryan Zesch</a>
           </li>
           <li>
             CS441 (computer graphics) lecture slides, notes and project
@@ -119,6 +174,21 @@
             <a href="https://www.glfw.org/docs/3.3/group__mods.html"
               >GLFW Mods</a
             >
+          </li>
+          <li>
+            <a
+              href="https://learnopengl.com/Getting-started/Hello-Window"
+              target="_blank"
+              >std::rand</a
+            >
+            to generate random object materials (colors), positions, rotations,
+            scales, etc...
+          </li>
+          <li>
+            <a href="https://minecraft.fandom.com/wiki/Grass_Block"
+              >grass texture</a
+            >
+            for the XZ infplane texture (the ground).
           </li>
         </ol>
       </section>
