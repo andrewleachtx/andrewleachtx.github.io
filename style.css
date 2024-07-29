@@ -875,3 +875,31 @@ code {
   border-radius: 15px;
   justify-self: auto;
 }
+
+/* TYPEWRITER EFFECTS */
+
+.typewriter-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: rgb(85, 85, 85);
+  white-space: nowrap;
+}
+
+.cursor {
+  font-weight: bold;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 50% {
+      opacity: 1;
+  }
+  50.1%, 100% {
+      opacity: 0;
+  }
+}
