@@ -68,6 +68,14 @@ nav {
   height: 15vh;
 }
 
+/* Need this so only the header nav has it */
+#desktop-nav {
+  justify-content: space-around;
+  align-items: center;
+  height: 15vh;
+  background: url("./assets/nav.png") no-repeat center center/cover;
+}
+
 .nav-links {
   gap: 1.3rem;
   list-style: none;
