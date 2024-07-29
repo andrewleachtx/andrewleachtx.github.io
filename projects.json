@@ -18,6 +18,16 @@
         "image": "../projects/freelook/assets/freelook.png",
         "link": "../projects/freelook/freelook.html",
         "desc": "C++ / OpenGL free-look world with movement, zoomable camera, HUD, minimap, textures, animated objects, and lighting.",
+        "pinned": false
+      },
+      {
+        "title": "Breast Cancer & Pneumonia Classification with Machine Learning",
+        "date": "May 2024",
+        "timeframe": "2 weeks",
+        "readtime": "",
+        "image": "../projects/pneucancer/assets/pneucancer.png",
+        "link": "../projects/pneucancer/pneucancer.html",
+        "desc": "Python / PyTorch AUC maximization by deep learning for imbalanced medical classification tasks.",
         "pinned": true
       },
       {

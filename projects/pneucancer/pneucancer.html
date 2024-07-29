@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Andrew Leach | X-Ray Classification</title>
+    <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../mediaqueries.css" />
+
+    <!-- MathJax -->
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+  </head>
+
+  <body>
+    <html>
+      <nav id="desktop-nav">
+        <div class="logo">Andrew D. Leach</div>
+
+        <div>
+          <ul class="nav-links">
+            <li>
+              <a href="../../">
+                <img
+                  src="../../assets/icon-home.svg"
+                  alt="home icon"
+                  class="icon-grow"
+                />
+              </a>
+            </li>
+            <li><a href="../../#about">me</a></li>
+            <li><a href="../../#experience">experience</a></li>
+            <li><a href="../../#contact">contact</a></li>
+            <li><a href="../../pages/projects.html">projects</a></li>
+            <li><a href="../../pages/fun.html">fun</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <nav id="hamburger-nav">
+        <div class="logo">Andrew D. Leach</div>
+        <div class="hamburger-menu">
+          <div class="hamburger-icon" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+          <div class="menu-links">
+            <li><a href="../../#about" onclick="toggleMenu()">about</a></li>
+            <li>
+              <a href="../../#experience" onclick="toggleMenu()">experience</a>
+            </li>
+            <li><a href="../../#contact">contact</a></li>
+            <li>
+              <a href="../../pages/projects.html" onclick="toggleMenu()"
+                >projects</a
+              >
+            </li>
+            <li>
+              <a href="../../pages/fun.html" onclick="toggleMenu()">fun</a>
+            </li>
+          </div>
+        </div>
+      </nav>
+
+      <div class="project-sidebar">
+        <a href="#classification">Classification</a>
+        <a href="#fullpaper">Full Paper</a>
+        <a href="#credits">Thanks & Credits</a>
+      </div>
+
+      <section id="classification" class="project">
+        <h3 class="project-title">
+          Classification of Breast Cancer & Pneumonia with Unbalanced Medical
+          Imaging
+        </h3>
+
+        <p>
+          One domain of interest in machine learning is in
+          <strong>medical diagnostics</strong>. Diagnosis can be an indefinite
+          process, often dependent on having the right experts available at the
+          right time to review data on a case-by-case basis. Even then, experts
+          can be wrong, and may be unable to analyze the infinitesimally fine
+          details within the data.
+        </p>
+
+        <p>
+          If deep neural networks can be trained to observe fine details and
+          recognize patterns in medical imaging data, accurately diagnosing
+          medical conditions, then
+          <strong>perhaps many lives can be saved</strong>.
+        </p>
+
+        <p>
+          That said, much of the medical imaging data for training these
+          networks is <strong>imbalanced</strong> - that is to say there are
+          vastly more examples of healthy patients than unhealthy, or vice
+          versa. The goal of this research is to develop a highly useful
+          classification model for diagnosing medical conditions through
+          <strong>trial performance evaluation</strong>, despite these imaging
+          constraints.
+        </p>
+
+        <h2 id="fullpaper">Full Paper (PDF)</h2>
+        <iframe
+          class="pdf"
+          src="./assets/report.pdf"
+          width="100%"
+          height="1000"
+        >
+        </iframe>
+
+        <h2 id="credits">Thanks & Credits</h2>
+        <ol>
+          <li>Anil Parthasarathi & Brigham Pettit</li>
+          <li>
+            <a href="https://people.tamu.edu/~tianbao-yang/" target="_blank"
+              >Dr. Tianbao Yang</a
+            >
+            &
+            <a href="https://zhishuaiguo.github.io/" target="_blank"
+              >Zhishuai Guo</a
+            >
+          </li>
+          <li>
+            CS421 (machine learning) material, notes and project guidance.
+          </li>
+          <li>
+            Citations are included towards the end of the full paper PDF.
+          </li>
+        </ol>
+      </section>
+
+      <footer>
+        <nav>
+          <div class="nav-links-container">
+            <ul class="nav-links">
+              <li>
+                <a href="../../">
+                  <img
+                    src="../../assets/icon-home.svg"
+                    alt="home icon"
+                    class="icon-grow"
+                  />
+                </a>
+              </li>
+              <li><a href="../../#about">me</a></li>
+              <li><a href="../../#experience">experience</a></li>
+              <li><a href="../../#contact">contact</a></li>
+              <li><a href="../../pages/projects.html">projects</a></li>
+              <li><a href="../../pages/fun.html">fun</a></li>
+            </ul>
+          </div>
+        </nav>
+        <p>&#169; 2024 Andrew Leach. All Rights Reserved.</p>
+      </footer>
+
+      <script src="../../script.js" async defer></script>
+    </html>
+  </body>
+</html>
