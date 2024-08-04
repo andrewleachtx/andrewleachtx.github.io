@@ -3,9 +3,9 @@
 const texts = [
   "Software Engineering",
   "Computer Graphics",
-  "Statistics & ML",
-  "Teaching",
-  "Systems Programming",
+  "Statistics",
+  "Systems",
+  "Machine Learning",
 ];
 let currentTextIndex = 0;
 let currentCharIndex = 0;
