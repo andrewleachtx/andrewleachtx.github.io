@@ -6,4 +6,4 @@
    1. **Inline**: `\( ... \)`
    2. **Standalone/Display**: `$$ ... $$`
    
-3. [PrismJS](https://prismjs.com/) for embedding code highlights.
+3. ChatGPT and [Perplexity](https://www.perplexity.ai/) provided information and resources for stuff like the typewriter effect and other JavaScript language quirks or "features" that I had to learn.

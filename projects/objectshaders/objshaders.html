@@ -191,18 +191,155 @@
           </div>
         </div>
 
-        <p>...tbd</p>
+        <p>
+          This is the <strong>rendering pipeline</strong> for getting any object
+          stored as point data to appear on screen. There are many steps that
+          are involved behind the scenes, but the ones not abstracted away from
+          us in OpenGL are the <strong>vertex</strong> and
+          <strong>fragment</strong> shaders.
+        </p>
+
+        <p>
+          Each of the steps, especially object space conversion, are critical to
+          understanding how a rasterizer works. I will not be going in depth for
+          my own sake. Definitely look into them if you are interested.
+        </p>
+
         <h2 id="vertex-shader">Vertex Shader</h2>
-        <p>...tbd</p>
+        <p>
+          To start, vertex and fragment shaders are written in GLSL, which is a
+          flavor of C made for OpenGL. It comes with a set of built-in functions
+          and other features that allow for you to manipulate the inputted
+          vertex data across each vertex to get it ready for the fragment
+          shader.
+        </p>
+        <p>
+          Now, as you can see above in the rendering pipeline, the vertex shader
+          converts our object from object space \( ^{o} x \) to world space \(
+          ^{w} x \), then to eye/camera space \( ^{e} x \), and finally to clip
+          space \( ^{c} x \).
+        </p>
+        <p>
+          Now that is a lot of definitions for space transformation. But what is
+          each one and why?
+        </p>
+        <ol>
+          <li>
+            <strong>Object Space</strong>: This is the space where the object is
+            defined. One way I see it is: in object space we are talking about
+            where features of that object are relative to itself. It may help to
+            know typically the center of the object is (0, 0, 0) in object
+            space.
+          </li>
+          <li>
+            <strong>World Space</strong>: Now, when we have a scene with
+            multiple objects, it becomes important to perceive where these
+            unique objects are positioned in relation to the same world space
+            origin. This is why we convert each object (set of vertices) from
+            its own object space, to world space with matrix multiplication.
+            <br />
+            <br />
+            What you need to know is the <strong>model</strong> matrix takes us
+            out of model or object space, and to world. The inverse would then
+            take us from world back to object of course. The idea of using these
+            4D matrices and their inverses is a common theme in graphics.
+          </li>
+          <li>
+            <strong>Eye/Camera Space</strong>: Now that we know where multiple
+            objects in our scene are relative to the each other as well as an
+            absolute coordinate system, we can't really perceive a partition of
+            that space without the idea of a <strong>camera</strong> that can
+            view them.
+            <br />
+            <br />
+            So what we do is imagine a camera exists at some place in the world
+            with its own specifications. We then use the
+            <strong>view</strong> matrix to get from world space to eye, which
+            gives our coordinates in relation to the camera. Note the camera
+            lies at (0, 0, 0) in eye space.
+          </li>
+          <li>
+            <strong>Clip Space</strong>: Once our object is in eye space, it is
+            what the camera or us would see. But the problem is that is still a
+            3D space, and our monitors are 2D. So we need to convert our 3D
+            coordinates to 2D coordinates using a
+            <strong>projection matrix</strong> that is creating using the camera
+            specifications as stated earlier. <br />
+            <br />
+            Assuming a perspective view (which is the most common), we will
+            effectively divide our x, y, z by the z value to get a 2D coordinate
+            that will make objects further a way appear smaller, as x and y
+            shrink as z grows. The matrix for perspective is something you
+            should google.
+          </li>
+        </ol>
+
+        <p>
+          There are some interesting other things besides space conversion you
+          can do per vertex in the vertex shader to achieve various effects.
+          However, note that many of these effects can be applied to the same
+          transformation matrices that are passed in, and so it would be more
+          efficient to perform them in the render loop that calls the vertex
+          shader.
+        </p>
+
+        <p>
+          Ok, so now that our object is in clip space, OpenGL will handle the
+          rest of the pipeline according to the program's knowledge of the
+          window you tell it you will be rendering to. At that point, the
+          fragment or pixel data will be rasterized by OpenGL and passed to the
+          fragment shader.
+        </p>
+
+        <p>
+          The <a href="#scenes">scenes</a> above rotate over time for example.
+          This is done simply by parametrizing the rotation matrix of each
+          object as a function of time. You would want to do that in the CPU
+          side of things (the program), not the shader. That's because the
+          rotation angle is a <strong>uniform</strong> value that is the same
+          for all vertices of an object.
+        </p>
+
         <h2 id="fragment-shader">Fragment Shader</h2>
-        <p>...tbd</p>
+        <p>
+          The fragment shader is where you are literally working at the pixel
+          level. This is where we can get some pretty awesome effects for each
+          pixel applied. Lighting, blurs, and other effects can be applied here
+          before you output the final color any given pixel will take on screen.
+        </p>
+
+        <p>
+          Some of the <a href="#scenes">scenes</a> I showed earlier are using
+          shading techniques like silhouette shading, cel shading, and other
+          blinn-phong material properties to achieve the look they have. My
+          favorite, the jade and magenta specular is achieved with
+          <a
+            href="https://en.wikipedia.org/wiki/Quantization_(signal_processing)"
+            target="_blank"
+            >quantization</a
+          >, which is how cel-shading works.
+        </p>
+
+        <p>
+          You are effectively checking the levels of the RGB channels, and for
+          each of their values, mapping a set color for each of them based on
+          where they fall in a threshold. That is how you get this level-like or
+          cartoon effect.
+        </p>
+
+        <p>
+          These are all things that you can make understandings of on your own.
+          Working at the shader level is a very complex skill because it is a
+          middle ground between programming and art. I personally see those as
+          both being very difficult to master... which makes the intersection so
+          incredible to see when it is executed well.
+        </p>
 
         <h2 id="future">Future</h2>
         <p>
           I am pretty satisfied - no changes for this <em>specifically</em> -
           there is something else I want to do with shaders that will rely on
-          knowledge from this and other projects. But that will be posted
-          elsewhere.
+          knowledge from this and other projects.
         </p>
         <h2 id="credits">Thanks & Credits</h2>
         <ol>
