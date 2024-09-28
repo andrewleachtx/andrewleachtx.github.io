@@ -28,7 +28,7 @@
         "image": "../projects/pneucancer/assets/pneucancer.png",
         "link": "../projects/pneucancer/pneucancer.html",
         "desc": "Python / PyTorch AUC maximization by deep learning for imbalanced medical classification tasks.",
-        "pinned": true
+        "pinned": false
       },
       {
         "title": "Rasterizer",
