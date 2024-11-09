@@ -1,9 +1,19 @@
 {
   "projects": [
     {
+      "title": "Particle Systems",
+      "date": "September 2024",
+      "timeframe": "25 hours",
+      "readtime": "5 minute read",
+      "image": "../projects/particle_systems/assets/scene.png",
+      "link": "../projects/particle_systems/particle_systems.html",
+      "desc": "C++ physics simulation & OpenGL rendering of portal-like particles with multiple features. About 40 hours were invested to this project.",
+      "pinned": false
+    },
+    {
       "title": "cudasimulateworlds",
       "date": "October 2024",
-      "timeframe": "2 weeks",
+      "timeframe": "15 hours",
       "readtime": "10 minute read",
       "image": "../projects/cudasimulateworlds/assets/plot.png",
       "link": "https://github.com/andrewleachtx/cudasimulateworlds",
@@ -13,11 +23,11 @@
     {
       "title": "cudapointcollisions",
       "date": "October 2024",
-      "timeframe": "1 week",
+      "timeframe": "10 hours",
       "readtime": "10 minute read",
       "image": "../projects/cudapointcollisions/assets/plots.png",
       "link": "https://github.com/andrewleachtx/cudapointcollisions",
-      "desc": "Maximizing particle count in GPU-parallelized (NVIDIA RTX 4090) physics simulation with 6 plane checks and basic forces while minimizing kernel time",
+      "desc": "Maximizing particle count in GPU-parallelized (NVIDIA RTX 4090) physics simulation with 6 plane checks and basic forces while minimizing kernel time.",
       "pinned": false
     },
     {

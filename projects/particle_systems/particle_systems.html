@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Andrew Leach | Particle Systems</title>
+    <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../stylemd.css" />
+    <link rel="stylesheet" href="../../mediaqueries.css" />
+
+    <body>
+      <html>
+        <nav id="desktop-nav">
+          <div class="logo">Andrew D. Leach</div>
+
+          <div>
+            <ul class="nav-links">
+              <li>
+                <a href="../../">
+                  <img
+                    src="../../assets/icon-home.svg"
+                    alt="home icon"
+                    class="icon-grow"
+                  />
+                </a>
+              </li>
+              <li><a href="../../pages/projects.html">projects</a></li>
+              <li><a href="../../#about">me</a></li>
+              <li><a href="../../#experience">experience</a></li>
+              <li><a href="../../#contact">contact</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <nav id="hamburger-nav">
+          <div class="logo">Andrew D. Leach</div>
+          <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="menu-links">
+              <li>
+                <a href="../">
+                  <img
+                    src="../../assets/icon-home.svg"
+                    alt="home icon"
+                    class="icon"
+                  />
+                </a>
+              </li>
+              <li>
+                <a href="../../pages/projects.html" onclick="toggleMenu()"
+                  >projects</a
+                >
+              </li>
+              <li><a href="../../#about" onclick="toggleMenu()">me</a></li>
+              <li>
+                <a href="../../#experience" onclick="toggleMenu()"
+                  >experience</a
+                >
+              </li>
+              <li>
+                <a href="../../#contact" onclick="toggleMenu()">contact</a>
+              </li>
+            </div>
+          </div>
+        </nav>
+
+        <div class="project-sidebar">
+          <a href="#particle_systems">Particle Systems</a>
+          <a href="#disclaimer">Disclaimer</a>
+          <a href="#scenes">Scenes</a>
+          <a href="#features">Features</a>
+          <a href="#resources">Resources</a>
+        </div>
+      </html>
+    </body>
+
+    <script type="text/javascript">
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+        },
+        options: {},
+        loader: {},
+      };
+    </script>
+    <script
+      type="text/javascript"
+      async=""
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+      charset="UTF-8"
+    ></script>
+  </head>
+  
+  <body for="html-export">
+    <div class="crossnote markdown-preview">
+      <h1 id="particle-systems">Particle Systems</h1>
+      <p>
+        C++ physics engine with OpenGL rendering with particles, bounding
+        sphere-ray optimization, portals (physics only), and particle shotgun
+        mechanics.
+      </p>
+      <h2 id="disclaimer">Disclaimer</h2>
+      <p>Textures and visuals are not mine, just the code.</p>
+      <h2 id="scenes">Scenes</h2>
+      <ul>
+        <li>
+          Pictures don’t do it justice; please watch it in action on the
+          <a href="https://www.youtube.com/watch?v=VYosMS7UIFw">YouTube demo</a
+          >. To be fair, YouTube compression also doesn’t do it justice.
+        </li>
+      </ul>
+      <h2 id="features">Features</h2>
+      <p>
+        This is basically an extension of my bouncing ball or
+        <strong>1 point 6 planes</strong>, but
+        <span class="mathjax-exps">$\geq 1$</span> points, or particles. Some
+        notable features are:
+      </p>
+      <ul>
+        <li>
+          Spherical coordinate usage to generate (pseudo)random “shotgun” spread
+          from the camera in a ray outward.
+        </li>
+        <li>
+          Ray-plane and ray-triangle intersection, including support for any
+          Mesh composed of triangles.
+          <ul>
+            <li>The <strong>Stanford bunny</strong> was used in the video!</li>
+          </ul>
+        </li>
+        <li>
+          To avoid costly intersection tests, a bounding volume (sphere) was
+          wrapped around this Stanford bunny. If we aren’t close to the bunny,
+          why iterate over all primitives (triangles) that define our mesh?
+        </li>
+        <li>
+          Portals! I sunk probably 10 hours alone messing with stencil buffers
+          and other techniques to rerender the scene from a new perspective in
+          OpenGL - to no avail. However, the physics is there and this is
+          evident in the video.
+        </li>
+        <li>
+          Intense texture mapping that I’ve never done before was nice to prove
+          to myself it was possible, despite the time sink it was to get it
+          right.
+        </li>
+      </ul>
+      <h2 id="resources">Resources</h2>
+      <ul>
+        <li><a href="https://github.com/ocornut/imgui">Dear ImGUI</a></li>
+        <li>
+          <a href="https://people.engr.tamu.edu/sueda/index.html"
+            >Dr. Shinjiro Sueda</a
+          >
+          CSCE 441 assignment skeleton code.
+        </li>
+        <li>
+          <a href="https://people.engr.tamu.edu/keyser/index.html"
+            >Dr. John Keyser</a
+          >
+        </li>
+        <li>Lecture materials and notes.</li>
+        <li>
+          Various obj files and textures were referenced online for this
+          project, those of which are not included in the repo nor are they
+          included in the submission.
+        </li>
+        <li>
+          Sebastian Lague -
+          <a href="https://www.youtube.com/watch?v=cWpFZbjtSQg"
+            >Coding Adventure: Portals</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+
+  <footer>
+    <nav>
+      <div class="nav-links-container">
+        <ul class="nav-links">
+          <li>
+            <a href="../../">
+              <img
+                src="../../assets/icon-home.svg"
+                alt="home icon"
+                class="icon-grow"
+              />
+            </a>
+          </li>
+          <li><a href="../../pages/projects.html">projects</a></li>
+          <li><a href="../../#about">me</a></li>
+          <li><a href="../../#experience">experience</a></li>
+          <li><a href="../../#contact">contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p>&#169; 2024 Andrew Leach. All Rights Reserved.</p>
+  </footer>
+
+  <script src="../../script.js" async defer></script>
+</html>
