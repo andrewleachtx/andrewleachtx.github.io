@@ -17,7 +17,7 @@ function genProjects(projects) {
 
     proj_ele.classList.add("projects-card");
     proj_ele.innerHTML = `
-        <a href="${proj.link}">
+        <a href="${proj.link}" target="_blank">
             ${
               proj.pinned
                 ? '<img src="../assets/icon-pin.svg" class="icon-pin" alt="Pin Icon" />'

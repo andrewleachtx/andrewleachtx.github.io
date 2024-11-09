@@ -4,7 +4,8 @@ const texts = [
   "Computer Graphics",
   "Statistics + ML",
   "Systems",
-  "Manycore Enthusiast"
+  "Computing",
+  "Manycore Enjoyer"
 ];
 let currentTextIndex = 0;
 let currentCharIndex = 0;

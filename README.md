@@ -1,8 +1,12 @@
 # Personal Website
 
 ## Adding Projects
+**Option** 1:
 1. Open `projects.json`, populate new entry.
-2. Open `projects/`, populate new folder with `newproject.html` and its resources.
+2. Open `projects/`, populate new folder with `newproject.html`, `assets/`, and `newproject.md`
+
+**Option 2:**
+3. Run `addproject.sh`
 
 ## Notes
 1. Style and theme based off of this [tutorial](https://www.youtube.com/watch?v=ldwlOzRvYOU).
