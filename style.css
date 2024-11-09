@@ -2,7 +2,6 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap");
 
-
 /* Reset everything so we can align ourself */
 * {
   margin: 0;
@@ -48,21 +47,21 @@ a,
 
 /* WIP HEADER */
 #wip-nav {
-    background-color: var(--purple_);
+  background-color: var(--purple_);
 
-    text-align: center;
-    max-height: 3vh;
-    min-width: 100vw;
-    font-size: 1rem;
+  text-align: center;
+  max-height: 3vh;
+  min-width: 100vw;
+  font-size: 1rem;
 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    z-index: 10;
-    position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  position: relative;
 }
 
 #last-updated-date {
-    /* bold */
-    font-weight: 800;
+  /* bold */
+  font-weight: 800;
 }
 
 /* DESKTOP NAV */
@@ -272,6 +271,12 @@ section {
 
 .title {
   font-size: 3rem;
+  text-align: center;
+}
+
+.subtitle {
+  color: gray;
+  font-size: 1rem;
   text-align: center;
 }
 
