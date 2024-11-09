@@ -2,6 +2,7 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&display=swap");
 
+
 /* Reset everything so we can align ourself */
 * {
   margin: 0;
@@ -26,6 +27,7 @@ p {
   --charcoal_: rgb(53, 53, 53);
   --green_: #46d339;
   --orange_: #ffa500;
+  --purple_brighter_: #e9cbf9;
 }
 
 /* TRANSITION */
@@ -46,13 +48,21 @@ a,
 
 /* WIP HEADER */
 #wip-nav {
-  display: flex;
-  background-color: var(--purple_);
-  max-height: 3vh;
-  min-width: 100vw;
-  position: fixed;
-  z-index: 1000;
-  bottom: 0;
+    background-color: var(--purple_);
+
+    text-align: center;
+    max-height: 3vh;
+    min-width: 100vw;
+    font-size: 1rem;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    position: relative;
+}
+
+#last-updated-date {
+    /* bold */
+    font-weight: 800;
 }
 
 /* DESKTOP NAV */
@@ -84,19 +94,21 @@ nav {
 
 a {
   color: black;
-  /* Gets rid of underline from hrefs so we can customize later */
   text-decoration: none;
-  text-decoration-color: white;
+  text-decoration-color: var(--purple_brighter_);
 
-  transition: all 0.2s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 
 /* Custom hover for hrefs */
 a:hover {
-  color: var(--purple_);
+  color: var(--purple_brighter_);
   text-decoration: underline;
-  text-underline-offset: 0.45rem;
-  text-decoration-color: var(--purple_);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 0.5rem;
+  text-decoration-color: var(--purple_brighter_);
+
+  transition: all 0.25s ease-in-out;
 }
 
 .logo {
@@ -726,7 +738,12 @@ footer p {
 }
 
 .project a:hover {
-  color: var(--purple_);
+  color: var(--purple_brighter_);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 0.4rem;
+  text-decoration-color: var(--purple_brighter_);
+
+  transition: all 0.25s ease-in-out;
 }
 
 .project-title {
@@ -793,7 +810,8 @@ footer p {
   border-radius: 15px;
 }
 
-.project h2, h4 {
+.project h2,
+h4 {
   align-self: flex-start;
   text-align: left;
 }
@@ -847,7 +865,8 @@ code {
   margin-bottom: 20px;
 }
 
-.performance-table th, .performance-table td {
+.performance-table th,
+.performance-table td {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: left;
@@ -896,11 +915,13 @@ code {
 }
 
 @keyframes blink {
-  0%, 50% {
-      opacity: 1;
+  0%,
+  50% {
+    opacity: 1;
   }
-  50.1%, 100% {
-      opacity: 0;
+  50.1%,
+  100% {
+    opacity: 0;
   }
 }
 

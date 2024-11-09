@@ -1,11 +1,10 @@
 /* https://css-tricks.com/snippets/css/typewriter-effect/ */
 
 const texts = [
-  "Software Engineering",
   "Computer Graphics",
-  "Statistics",
+  "Statistics + ML",
   "Systems",
-  "Machine Learning",
+  "Manycore Enthusiast"
 ];
 let currentTextIndex = 0;
 let currentCharIndex = 0;

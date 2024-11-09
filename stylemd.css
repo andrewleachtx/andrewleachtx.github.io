@@ -1,0 +1,908 @@
+body[for="html-export"] .crossnote.markdown-preview code[class*="language-"],
+body[for="html-export"] .crossnote.markdown-preview pre[class*="language-"] {
+  color: #333;
+  background: transparent;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+body[for="html-export"] .crossnote.markdown-preview pre[class*="language-"] {
+  padding: 0.8em;
+  overflow: auto;
+  border-radius: 3px;
+  background: #f5f5f5;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  :not(pre)
+  > code[class*="language-"] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.blockquote,
+body[for="html-export"] .crossnote.markdown-preview .token.comment {
+  color: #969896;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.cdata {
+  color: #183691;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.doctype,
+body[for="html-export"] .crossnote.markdown-preview .token.macro.property,
+body[for="html-export"] .crossnote.markdown-preview .token.punctuation,
+body[for="html-export"] .crossnote.markdown-preview .token.variable {
+  color: #333;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.builtin,
+body[for="html-export"] .crossnote.markdown-preview .token.important,
+body[for="html-export"] .crossnote.markdown-preview .token.keyword,
+body[for="html-export"] .crossnote.markdown-preview .token.operator,
+body[for="html-export"] .crossnote.markdown-preview .token.rule {
+  color: #a71d5d;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.attr-value,
+body[for="html-export"] .crossnote.markdown-preview .token.regex,
+body[for="html-export"] .crossnote.markdown-preview .token.string,
+body[for="html-export"] .crossnote.markdown-preview .token.url {
+  color: #183691;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.atrule,
+body[for="html-export"] .crossnote.markdown-preview .token.boolean,
+body[for="html-export"] .crossnote.markdown-preview .token.code,
+body[for="html-export"] .crossnote.markdown-preview .token.command,
+body[for="html-export"] .crossnote.markdown-preview .token.constant,
+body[for="html-export"] .crossnote.markdown-preview .token.entity,
+body[for="html-export"] .crossnote.markdown-preview .token.number,
+body[for="html-export"] .crossnote.markdown-preview .token.property,
+body[for="html-export"] .crossnote.markdown-preview .token.symbol {
+  color: #0086b3;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.prolog,
+body[for="html-export"] .crossnote.markdown-preview .token.selector,
+body[for="html-export"] .crossnote.markdown-preview .token.tag {
+  color: #63a35c;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.attr-name,
+body[for="html-export"] .crossnote.markdown-preview .token.class,
+body[for="html-export"] .crossnote.markdown-preview .token.class-name,
+body[for="html-export"] .crossnote.markdown-preview .token.function,
+body[for="html-export"] .crossnote.markdown-preview .token.id,
+body[for="html-export"] .crossnote.markdown-preview .token.namespace,
+body[for="html-export"] .crossnote.markdown-preview .token.pseudo-class,
+body[for="html-export"] .crossnote.markdown-preview .token.pseudo-element,
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .token.url-reference
+  .token.variable {
+  color: #795da3;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.entity {
+  cursor: help;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.title,
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .token.title
+  .token.punctuation {
+  font-weight: 700;
+  color: #1d3e81;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.list {
+  color: #ed6a43;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.bold {
+  font-weight: 700;
+}
+
+body[for="html-export"] .crossnote.markdown-preview .token.italic {
+  font-style: italic;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .language-json
+  .token.property {
+  color: #183691;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .language-markup
+  .token.tag
+  .token.punctuation {
+  color: #333;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .language-css
+  .token.function,
+body[for="html-export"] .crossnote.markdown-preview code.language-css {
+  color: #0086b3;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .language-yaml
+  .token.atrule {
+  color: #63a35c;
+}
+
+body[for="html-export"] .crossnote.markdown-preview code.language-yaml {
+  color: #183691;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .language-ruby
+  .token.function {
+  color: #333;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .language-markdown
+  .token.url {
+  color: #795da3;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .language-makefile
+  .token.symbol {
+  color: #795da3;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .language-makefile
+  .token.variable {
+  color: #183691;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .language-makefile
+  .token.builtin {
+  color: #0086b3;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .language-bash
+  .token.keyword {
+  color: #0086b3;
+}
+
+body[for="html-export"] .crossnote.markdown-preview pre[data-line] {
+  position: relative;
+  padding: 1em 0 1em 3em;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  pre[data-line]
+  .line-highlight-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: transparent;
+  display: block;
+  width: 100%;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  pre[data-line]
+  .line-highlight {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: inherit 0;
+  margin-top: 1em;
+  background: hsla(24, 20%, 50%, 0.08);
+  background: linear-gradient(
+    to right,
+    hsla(24, 20%, 50%, 0.1) 70%,
+    hsla(24, 20%, 50%, 0)
+  );
+  pointer-events: none;
+  line-height: inherit;
+  white-space: pre;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  pre[data-line]
+  .line-highlight:before,
+body[for="html-export"]
+  .crossnote.markdown-preview
+  pre[data-line]
+  .line-highlight[data-end]:after {
+  content: attr(data-start);
+  position: absolute;
+  top: 0.4em;
+  left: 0.6em;
+  min-width: 1em;
+  padding: 0 0.5em;
+  background-color: hsla(24, 20%, 50%, 0.4);
+  color: #f4f1ef;
+  font: bold 65%/1.5 sans-serif;
+  text-align: center;
+  vertical-align: 0.3em;
+  border-radius: 999px;
+  text-shadow: none;
+  box-shadow: 0 1px #fff;
+}
+
+body[for="html-export"]
+  .crossnote.markdown-preview
+  pre[data-line]
+  .line-highlight[data-end]:after {
+  content: attr(data-end);
+  top: auto;
+  bottom: 0.4em;
+}
+
+body[for="html-export"] .crossnote.markdown-preview {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans,
+    sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  overflow: initial;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+body[for="html-export"] .crossnote.markdown-preview > :first-child {
+  margin-top: 0;
+}
+body[for="html-export"] .crossnote.markdown-preview h1,
+body[for="html-export"] .crossnote.markdown-preview h2,
+body[for="html-export"] .crossnote.markdown-preview h3,
+body[for="html-export"] .crossnote.markdown-preview h4,
+body[for="html-export"] .crossnote.markdown-preview h5,
+body[for="html-export"] .crossnote.markdown-preview h6 {
+  line-height: 1.2;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  color: #000;
+}
+body[for="html-export"] .crossnote.markdown-preview h1 {
+  font-size: 2.25em;
+  font-weight: 300;
+  padding-bottom: 0.3em;
+}
+body[for="html-export"] .crossnote.markdown-preview h2 {
+  font-size: 1.75em;
+  font-weight: 400;
+  padding-bottom: 0.3em;
+}
+body[for="html-export"] .crossnote.markdown-preview h3 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+body[for="html-export"] .crossnote.markdown-preview h4 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+body[for="html-export"] .crossnote.markdown-preview h5 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+body[for="html-export"] .crossnote.markdown-preview h6 {
+  font-size: 1em;
+  font-weight: 600;
+}
+body[for="html-export"] .crossnote.markdown-preview h1,
+body[for="html-export"] .crossnote.markdown-preview h2,
+body[for="html-export"] .crossnote.markdown-preview h3,
+body[for="html-export"] .crossnote.markdown-preview h4,
+body[for="html-export"] .crossnote.markdown-preview h5 {
+  font-weight: 600;
+}
+body[for="html-export"] .crossnote.markdown-preview h5 {
+  font-size: 1em;
+}
+body[for="html-export"] .crossnote.markdown-preview h6 {
+  color: #5c5c5c;
+}
+body[for="html-export"] .crossnote.markdown-preview strong {
+  color: #000;
+}
+
+body[for="html-export"] .crossnote.markdown-preview del {
+  color: #5c5c5c;
+}
+
+body[for="html-export"] .crossnote.markdown-preview a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+body[for="html-export"] .crossnote.markdown-preview a {
+  color: #08c;
+  text-decoration: none;
+}
+
+body[for="html-export"] .crossnote.markdown-preview a:hover {
+  color: #00a3f5;
+  text-decoration: none;
+}
+
+body[for="html-export"] .crossnote.markdown-preview body img {
+  max-width: 100%;
+}
+body[for="html-export"] .crossnote.markdown-preview body > p {
+  margin-top: 0;
+  margin-bottom: 16px;
+  word-wrap: break-word;
+}
+body[for="html-export"] .crossnote.markdown-preview body > ol,
+body[for="html-export"] .crossnote.markdown-preview body > ul {
+  margin-bottom: 16px;
+}
+body[for="html-export"] .crossnote.markdown-preview body ol,
+body[for="html-export"] .crossnote.markdown-preview body ul {
+  padding-left: 2em;
+}
+body[for="html-export"] .crossnote.markdown-preview body ol.no-list,
+body[for="html-export"] .crossnote.markdown-preview body ul.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+body[for="html-export"] .crossnote.markdown-preview body ol ol,
+body[for="html-export"] .crossnote.markdown-preview body ol ul,
+body[for="html-export"] .crossnote.markdown-preview body ul ol,
+body[for="html-export"] .crossnote.markdown-preview body ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+body[for="html-export"] .crossnote.markdown-preview body li {
+  margin-bottom: 0;
+}
+body[for="html-export"] .crossnote.markdown-preview body li.task-list-item {
+  list-style: none;
+}
+body[for="html-export"] .crossnote.markdown-preview body li > p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  body
+  .task-list-item-checkbox {
+  margin: 0 0.2em 0.25em -1.8em;
+  vertical-align: middle;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  body
+  .task-list-item-checkbox:hover {
+  cursor: pointer;
+}
+body[for="html-export"] .crossnote.markdown-preview body blockquote {
+  margin: 16px 0;
+  font-size: inherit;
+  padding: 0 15px;
+  color: #5c5c5c;
+  background-color: #f0f0f0;
+  border-left: 4px solid #d6d6d6;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  body
+  blockquote
+  > :first-child {
+  margin-top: 0;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  body
+  blockquote
+  > :last-child {
+  margin-bottom: 0;
+}
+body[for="html-export"] .crossnote.markdown-preview body hr {
+  height: 4px;
+  margin: 32px 0;
+  background-color: #d6d6d6;
+  border: 0 none;
+}
+body[for="html-export"] .crossnote.markdown-preview body table {
+  margin: 10px 0 15px 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+body[for="html-export"] .crossnote.markdown-preview body table th {
+  font-weight: 700;
+  color: #000;
+}
+body[for="html-export"] .crossnote.markdown-preview body table td,
+body[for="html-export"] .crossnote.markdown-preview body table th {
+  border: 1px solid #d6d6d6;
+  padding: 6px 13px;
+}
+body[for="html-export"] .crossnote.markdown-preview body dl {
+  padding: 0;
+}
+body[for="html-export"] .crossnote.markdown-preview body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: 700;
+}
+body[for="html-export"] .crossnote.markdown-preview body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+body[for="html-export"] .crossnote.markdown-preview body code {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 0.85em;
+  color: #000;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  padding: 0.2em 0;
+}
+body[for="html-export"] .crossnote.markdown-preview body code::after,
+body[for="html-export"] .crossnote.markdown-preview body code::before {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+body[for="html-export"] .crossnote.markdown-preview body pre > code {
+  padding: 0;
+  margin: 0;
+  word-break: normal;
+  white-space: pre;
+  background: 0 0;
+  border: 0;
+}
+body[for="html-export"] .crossnote.markdown-preview body .highlight {
+  margin-bottom: 16px;
+}
+body[for="html-export"] .crossnote.markdown-preview body .highlight pre,
+body[for="html-export"] .crossnote.markdown-preview body pre {
+  padding: 1em;
+  overflow: auto;
+  line-height: 1.45;
+  border: #d6d6d6;
+  border-radius: 3px;
+}
+body[for="html-export"] .crossnote.markdown-preview body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+body[for="html-export"] .crossnote.markdown-preview body pre code,
+body[for="html-export"] .crossnote.markdown-preview body pre tt {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+body[for="html-export"] .crossnote.markdown-preview body pre code:after,
+body[for="html-export"] .crossnote.markdown-preview body pre code:before,
+body[for="html-export"] .crossnote.markdown-preview body pre tt:after,
+body[for="html-export"] .crossnote.markdown-preview body pre tt:before {
+  content: normal;
+}
+body[for="html-export"] .crossnote.markdown-preview body blockquote,
+body[for="html-export"] .crossnote.markdown-preview body dl,
+body[for="html-export"] .crossnote.markdown-preview body ol,
+body[for="html-export"] .crossnote.markdown-preview body p,
+body[for="html-export"] .crossnote.markdown-preview body pre,
+body[for="html-export"] .crossnote.markdown-preview body ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+body[for="html-export"] .crossnote.markdown-preview body kbd {
+  color: #000;
+  border: 1px solid #d6d6d6;
+  border-bottom: 2px solid #c7c7c7;
+  padding: 2px 4px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+}
+@media print {
+  body[for="html-export"] .crossnote.markdown-preview body {
+    background-color: #fff;
+  }
+  body[for="html-export"] .crossnote.markdown-preview body h1,
+  body[for="html-export"] .crossnote.markdown-preview body h2,
+  body[for="html-export"] .crossnote.markdown-preview body h3,
+  body[for="html-export"] .crossnote.markdown-preview body h4,
+  body[for="html-export"] .crossnote.markdown-preview body h5,
+  body[for="html-export"] .crossnote.markdown-preview body h6 {
+    color: #000;
+    page-break-after: avoid;
+  }
+  body[for="html-export"] .crossnote.markdown-preview body blockquote {
+    color: #5c5c5c;
+  }
+  body[for="html-export"] .crossnote.markdown-preview body pre {
+    page-break-inside: avoid;
+  }
+  body[for="html-export"] .crossnote.markdown-preview body table {
+    display: table;
+  }
+  body[for="html-export"] .crossnote.markdown-preview body img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  body[for="html-export"] .crossnote.markdown-preview body code,
+  body[for="html-export"] .crossnote.markdown-preview body pre {
+    word-wrap: break-word;
+    white-space: pre;
+  }
+}
+body[for="html-export"] .crossnote.markdown-preview {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+body[for="html-export"] .crossnote.markdown-preview ul {
+  list-style: disc;
+}
+body[for="html-export"] .crossnote.markdown-preview ul ul {
+  list-style: circle;
+}
+body[for="html-export"] .crossnote.markdown-preview ul ul ul {
+  list-style: square;
+}
+body[for="html-export"] .crossnote.markdown-preview ol {
+  list-style: decimal;
+}
+body[for="html-export"] .crossnote.markdown-preview ol ol,
+body[for="html-export"] .crossnote.markdown-preview ul ol {
+  list-style-type: lower-roman;
+}
+body[for="html-export"] .crossnote.markdown-preview ol ol ol,
+body[for="html-export"] .crossnote.markdown-preview ol ul ol,
+body[for="html-export"] .crossnote.markdown-preview ul ol ol,
+body[for="html-export"] .crossnote.markdown-preview ul ul ol {
+  list-style-type: lower-alpha;
+}
+body[for="html-export"] .crossnote.markdown-preview .newpage,
+body[for="html-export"] .crossnote.markdown-preview .pagebreak {
+  page-break-before: always;
+}
+body[for="html-export"] .crossnote.markdown-preview pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+body[for="html-export"] .crossnote.markdown-preview pre.line-numbers > code {
+  position: relative;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  pre.line-numbers
+  .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 1em;
+  font-size: 100%;
+  left: 0;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  pre.line-numbers
+  .line-numbers-rows
+  > span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  pre.line-numbers
+  .line-numbers-rows
+  > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .mathjax-exps
+  .MathJax_Display {
+  text-align: center !important;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview:not([data-for="preview"])
+  .code-chunk
+  .code-chunk-btn-group {
+  display: none;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview:not([data-for="preview"])
+  .code-chunk
+  .status {
+  display: none;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview:not([data-for="preview"])
+  .code-chunk
+  .output-div {
+  margin-bottom: 16px;
+}
+body[for="html-export"] .crossnote.markdown-preview .md-toc {
+  padding: 0;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .md-toc
+  .md-toc-link-wrapper
+  .md-toc-link {
+  display: inline;
+  padding: 0.25rem 0;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .md-toc
+  .md-toc-link-wrapper
+  .md-toc-link
+  div,
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .md-toc
+  .md-toc-link-wrapper
+  .md-toc-link
+  p {
+  display: inline;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .md-toc
+  .md-toc-link-wrapper.highlighted
+  .md-toc-link {
+  font-weight: 800;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .scrollbar-style::-webkit-scrollbar {
+  width: 8px;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview
+  .scrollbar-style::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+body[for="html-export"]
+  .crossnote.markdown-preview.scrollbar-style::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(150, 150, 150, 0.66);
+  border: 4px solid rgba(150, 150, 150, 0.66);
+  background-clip: content-box;
+}
+body[for="html-export"]:not([data-presentation-mode])
+  .crossnote.markdown-preview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+body[for="html-export"]:not([data-presentation-mode])
+  .crossnote.markdown-preview {
+  position: relative;
+  top: 0;
+  min-height: 100vh;
+}
+
+@media screen and (min-width: 914px) {
+  body[for="html-export"]:not([data-presentation-mode])
+    .crossnote.markdown-preview {
+    padding: 2em calc(50% - 457px + 2em);
+  }
+}
+
+@media screen and (max-width: 914px) {
+  body[for="html-export"]:not([data-presentation-mode])
+    .crossnote.markdown-preview {
+    padding: 2em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  body[for="html-export"]:not([data-presentation-mode])
+    .crossnote.markdown-preview {
+    font-size: 14px !important;
+    padding: 1em;
+  }
+}
+
+body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn {
+  position: fixed;
+  bottom: 8px;
+  left: 8px;
+  font-size: 28px;
+  cursor: pointer;
+  color: inherit;
+  z-index: 99;
+  width: 32px;
+  text-align: center;
+  opacity: 0.4;
+}
+
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  #sidebar-toc-btn {
+  opacity: 1;
+}
+
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  .md-sidebar-toc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  padding: 32px 0 48px 0;
+  font-size: 14px;
+  box-shadow: 0 0 4px rgba(150, 150, 150, 0.33);
+  box-sizing: border-box;
+  overflow: auto;
+  background-color: inherit;
+}
+
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  .md-sidebar-toc::-webkit-scrollbar {
+  width: 8px;
+}
+
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  .md-sidebar-toc::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  .md-sidebar-toc::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(150, 150, 150, 0.66);
+  border: 4px solid rgba(150, 150, 150, 0.66);
+  background-clip: content-box;
+}
+
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  .md-sidebar-toc
+  a {
+  text-decoration: none;
+}
+
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  .md-sidebar-toc
+  .md-toc {
+  padding: 0 16px;
+}
+
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  .md-sidebar-toc
+  .md-toc
+  .md-toc-link-wrapper
+  .md-toc-link {
+  display: inline;
+  padding: 0.25rem 0;
+}
+
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  .md-sidebar-toc
+  .md-toc
+  .md-toc-link-wrapper
+  .md-toc-link
+  div,
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  .md-sidebar-toc
+  .md-toc
+  .md-toc-link-wrapper
+  .md-toc-link
+  p {
+  display: inline;
+}
+
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  .md-sidebar-toc
+  .md-toc
+  .md-toc-link-wrapper.highlighted
+  .md-toc-link {
+  font-weight: 800;
+}
+
+body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+  .crossnote.markdown-preview {
+  left: 300px;
+  width: calc(100% - 300px);
+  padding: 2em calc(50% - 457px - 300px / 2);
+  margin: 0;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 1274px) {
+  body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+    .crossnote.markdown-preview {
+    padding: 2em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc]
+    .crossnote.markdown-preview {
+    width: 100%;
+  }
+}
+
+body[for="html-export"]:not([data-presentation-mode]):not(
+    [html-show-sidebar-toc]
+  )
+  .crossnote.markdown-preview {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+body[for="html-export"]:not([data-presentation-mode]):not(
+    [html-show-sidebar-toc]
+  )
+  .md-sidebar-toc {
+  display: none;
+}

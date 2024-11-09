@@ -1,5 +1,10 @@
 # Personal Website
 
+## Adding Projects
+1. Open `projects.json`, populate new entry.
+2. Open `projects/`, populate new folder with `newproject.html` and its resources.
+
+## Notes
 1. Style and theme based off of this [tutorial](https://www.youtube.com/watch?v=ldwlOzRvYOU).
 
 2. [MathJax](https://docs.mathjax.org/en/latest/basic/mathematics.html) has two main points:

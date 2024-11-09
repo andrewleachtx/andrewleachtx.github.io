@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Andrew Leach | 1point6planes</title>
+    <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../style.css" />
+    <link rel="stylesheet" href="../../stylemd.css" />
+    <link rel="stylesheet" href="../../mediaqueries.css" />
+
+    <body>
+      <html>
+        <nav id="desktop-nav">
+          <div class="logo">Andrew D. Leach</div>
+
+          <div>
+            <ul class="nav-links">
+              <li>
+                <a href="../../">
+                  <img
+                    src="../../assets/icon-home.svg"
+                    alt="home icon"
+                    class="icon-grow"
+                  />
+                </a>
+              </li>
+              <li><a href="../../pages/projects.html">projects</a></li>
+              <li><a href="../../#about">me</a></li>
+              <li><a href="../../#experience">experience</a></li>
+              <li><a href="../../#contact">contact</a></li>
+            </ul>
+          </div>
+        </nav>
+
+        <nav id="hamburger-nav">
+          <div class="logo">Andrew D. Leach</div>
+          <div class="hamburger-menu">
+            <div class="hamburger-icon" onclick="toggleMenu()">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div class="menu-links">
+              <li>
+                <a href="../">
+                  <img
+                    src="../../assets/icon-home.svg"
+                    alt="home icon"
+                    class="icon"
+                  />
+                </a>
+              </li>
+              <li>
+                <a href="../../pages/projects.html" onclick="toggleMenu()"
+                  >projects</a
+                >
+              </li>
+              <li><a href="../../#about" onclick="toggleMenu()">me</a></li>
+              <li>
+                <a href="../../#experience" onclick="toggleMenu()"
+                  >experience</a
+                >
+              </li>
+              <li>
+                <a href="../../#contact" onclick="toggleMenu()">contact</a>
+              </li>
+            </div>
+          </div>
+        </nav>
+
+        <div class="project-sidebar">
+          <a href="#1-point-6-planes">1 Point 6 Planes</a>
+          <a href="#visuals">Visuals</a>
+          <a href="#overview">Overview</a>
+          <a href="#simulation">Simulation</a>
+          <a href="#rendering">Rendering</a>
+          <a href="#resources">Resources</a>
+        </div>
+      </html>
+    </body>
+
+    <script type="text/javascript">
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+        },
+        options: {},
+        loader: {},
+      };
+    </script>
+    <script
+      type="text/javascript"
+      async=""
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+      charset="UTF-8"
+    ></script>
+  </head>
+
+  <body for="html-export">
+    <div class="crossnote markdown-preview">
+      <h1 id="1-point-6-planes">1 Point 6 Planes</h1>
+      <p>
+        This is my first ever physics simulation that ties in both a
+        <code>simulation</code> and <code>render</code> loop all occurring at
+        the same time. It is a pretty big deal for me!
+      </p>
+      <h2 id="visuals">Visuals</h2>
+      <div align="center">
+        <img src="assets/overview.png" width="75%" alt="Overview" />
+      </div>
+      <p>
+        As it is moving,
+        <a href="https://www.youtube.com/watch?v=TuYdcpQFQr0">this</a> brief
+        video does it better justice!
+      </p>
+      <h2 id="overview">Overview</h2>
+      <p>
+        In this case, we have a single point (with radius) and 6 planes. This is
+        what the code does:
+      </p>
+      <pre
+        data-role="codeBlock"
+        data-info="cpp"
+        class="language-cpp cpp"
+      ><code><span class="token keyword keyword-while">while</span> <span class="token number">1</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token operator">:</span>
+├── simulate
+│   └── solveConstraints
+└── render
+    ├── draw planes
+    └── draw sphere at point position
+</code></pre>
+      <p>More accurately,</p>
+      <pre
+        data-role="codeBlock"
+        data-info="cpp"
+        class="language-cpp cpp"
+      ><code><span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span>cur_time <span class="token operator">&lt;</span> MAX_TIME <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">glfwWindowShouldClose</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>simulation_frozen<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">simulate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Swap front and back buffers.</span>
+    <span class="token function">glfwSwapBuffers</span><span class="token punctuation">(</span>window<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// Poll for and process events.</span>
+    <span class="token function">glfwPollEvents</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+      <h2 id="simulation">Simulation</h2>
+      <p>
+        There are six planes, initialized with relevant physics data; a point on
+        the plane <span class="mathjax-exps">$\vec{p}$</span> and the normal
+        <span class="mathjax-exps">$\hat{n}$</span>.
+      </p>
+      <p>
+        The ball is a point or <code>glm::vec3</code> with its own position
+        <span class="mathjax-exps">$\vec{x}$</span> and velocity
+        <span class="mathjax-exps">$\vec{v}$</span>.
+      </p>
+      <p>
+        As timestep increases, the ball (point) position is updated according to
+        velocity. For the velocity update, we observe an acceleration based on
+        gravity, wind resistance, and frictional forces.
+      </p>
+      <pre
+        data-role="codeBlock"
+        data-info="cpp"
+        class="language-cpp cpp"
+      ><code><span class="token comment">// Full simulation with the loop</span>
+<span class="token keyword keyword-static">static</span> <span class="token keyword keyword-void">void</span> <span class="token function">simulate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword keyword-float">float</span> timestep_remaining <span class="token operator">=</span> SIMULATION_TIMESTEP <span class="token operator">/</span> DT_SUBSTEPS<span class="token punctuation">;</span>
+    <span class="token keyword keyword-float">float</span> dt <span class="token operator">=</span> timestep_remaining<span class="token punctuation">;</span>
+
+    <span class="token comment">// This is a single timestep</span>
+    <span class="token keyword keyword-while">while</span> <span class="token punctuation">(</span>timestep_remaining <span class="token operator">&gt;</span> FLOAT_EPS<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword keyword-for">for</span> <span class="token punctuation">(</span><span class="token keyword keyword-int">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> DT_SUBSTEPS<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword keyword-const">const</span> glm<span class="token double-colon punctuation">::</span>vec3<span class="token operator">&amp;</span> <span class="token function">x_cur</span><span class="token punctuation">(</span>ball_x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">v_cur</span><span class="token punctuation">(</span>ball_v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// We need to get the current acceleration acting on our ball based on gravity, air resistance, and friction</span>
+            glm<span class="token double-colon punctuation">::</span>vec3 a <span class="token operator">=</span> <span class="token function">getAcceleration</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Integrate with timestep to update xnew, vnew</span>
+            glm<span class="token double-colon punctuation">::</span>vec3 x_new <span class="token operator">=</span> x_cur <span class="token operator">+</span> <span class="token punctuation">(</span>v_cur <span class="token operator">*</span> dt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            glm<span class="token double-colon punctuation">::</span>vec3 v_new <span class="token operator">=</span> v_cur <span class="token operator">+</span> <span class="token punctuation">(</span>a <span class="token operator">*</span> dt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Solve any constraints imposed by updated positions - x_new, v_new, dt are pass by reference</span>
+            <span class="token function">solveConstraints</span><span class="token punctuation">(</span>x_new<span class="token punctuation">,</span> v_new<span class="token punctuation">,</span> dt<span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// Update states</span>
+            ball_x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> x_new<span class="token punctuation">;</span>
+            ball_v<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> v_new<span class="token punctuation">;</span>
+
+            <span class="token comment">// Update timestep</span>
+            timestep_remaining <span class="token operator">-=</span> dt<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    cur_step<span class="token operator">++</span><span class="token punctuation">;</span>
+    cur_time <span class="token operator">=</span> cur_step <span class="token operator">*</span> SIMULATION_TIMESTEP<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+      <p>
+        However, we should address <code>solveConstraints(...)</code> as without
+        it, we would clip through any of the six planes, which are effectively
+        six <strong>position constraints</strong> (our particle’s
+        <span class="mathjax-exps">$\vec{x}$</span> is constrained on one side
+        of the each plane).
+      </p>
+      <p>Because my actual cpp code is quite verbose, here is my logic:</p>
+      <pre
+        data-role="codeBlock"
+        data-info=""
+        class="language-text"
+      ><code>def solveConstraints(x_new, v_new, dt, a):
+    // 1 - COLLISION DETECTION
+    for plane in planes:
+        if ball passes plane (offset by ball radius)
+            handle collision, update timestep to fraction f = d_old / (d_old - d_new)
+        
+        check for "jitter" - if length(v) small, x on the plane, and the acceleration is towards the plane, set velocity to zero
+</code></pre>
+      <h2 id="rendering">Rendering</h2>
+      <p>
+        While the cpp code is full of GL calls, the logic itself is pretty
+        simple:
+      </p>
+      <pre
+        data-role="codeBlock"
+        data-info=""
+        class="language-text"
+      ><code>def render():
+    drawSun(time)
+    drawPlanes()
+    drawBall()
+</code></pre>
+      <p>
+        Note the position the ball is drawn is based on the same “buffer” stored
+        on CPU for the balls position
+        <span class="mathjax-exps">$\vec{x}$</span> and velocity
+        <span class="mathjax-exps">$\vec{v}$</span>.
+      </p>
+      <h2 id="resources">Resources</h2>
+      <ul>
+        <li>
+          <a href="https://people.engr.tamu.edu/keyser/index.html"
+            >Dr. John Keyser</a
+          >
+          CSCE649 physically based modeling instructor.
+        </li>
+        <li><a href="https://github.com/ocornut/imgui">Dear ImGUI</a></li>
+        <li>
+          <a href="https://people.engr.tamu.edu/sueda/index.html"
+            >Dr. Shinjiro Sueda</a
+          >
+          CSCE441 assignment skeleton code.
+        </li>
+        <li>Lecture materials and notes.</li>
+      </ul>
+    </div>
+  </body>
+
+  <footer>
+    <nav>
+      <div class="nav-links-container">
+        <ul class="nav-links">
+          <li>
+            <a href="../../">
+              <img
+                src="../../assets/icon-home.svg"
+                alt="home icon"
+                class="icon-grow"
+              />
+            </a>
+          </li>
+          <li><a href="../../pages/projects.html">projects</a></li>
+          <li><a href="../../#about">me</a></li>
+          <li><a href="../../#experience">experience</a></li>
+          <li><a href="../../#contact">contact</a></li>
+        </ul>
+      </div>
+    </nav>
+    <p>&#169; 2024 Andrew Leach. All Rights Reserved.</p>
+  </footer>
+
+  <script src="../../script.js" async defer></script>
+</html>

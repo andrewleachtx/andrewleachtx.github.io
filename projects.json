@@ -11,6 +11,16 @@
         "pinned": true
       },
       {
+        "title": "1 Point 6 Planes",
+        "date": "August 2024",
+        "timeframe": "2 weeks",
+        "readtime": "3 minute read",
+        "image": "../projects/1point6planes/assets/image.png",
+        "link": "../projects/1point6planes/1point6planes.html",
+        "desc": "Introduction to physics simulation with C++ / OpenGL - bouncing ball against 6 planes.",
+        "pinned": false
+      },
+      {
         "title": "Free-Look World",
         "date": "March 2024",
         "timeframe": "2 weeks",
