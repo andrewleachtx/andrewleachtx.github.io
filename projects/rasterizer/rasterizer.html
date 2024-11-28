@@ -1,338 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Andrew Leach | Rasterizer</title>
-    <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="../../style.css" />
-    <link rel="stylesheet" href="../../mediaqueries.css" />
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <title>Andrew Leach | Rasterizer</title>
+        <link rel="icon" href="../../assets/favicon.png" type="image/x-icon" />
+        <meta name="description" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="../../style.css" />
+        <link rel="stylesheet" href="../../mediaqueries.css" />
 
-    <!-- MathJax -->
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
-  </head>
+        <!-- MathJax -->
+        <script
+            id="MathJax-script"
+            async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+        ></script>
+    </head>
 
-  <body>
-    <html>
-      <nav id="desktop-nav">
-        <div class="logo">Andrew D. Leach</div>
+    <body>
+        <html>
+            <nav id="desktop-nav">
+                <div class="logo">Andrew D. Leach</div>
 
-        <div>
-          <ul class="nav-links">
-            <li>
-              <a href="../../">
-                <img
-                  src="../../assets/icon-home.svg"
-                  alt="home icon"
-                  class="icon-grow"
-                />
-              </a>
-            </li>
-            <li><a href="../../pages/projects.html">projects</a></li>
-            <li><a href="../../#about">me</a></li>
-            <li><a href="../../#experience">experience</a></li>
-            <li><a href="../../#contact">contact</a></li>
-          </ul>
-        </div>
-      </nav>
+                <div>
+                    <ul class="nav-links">
+                        <li>
+                            <a href="../../">
+                                <img
+                                    src="../../assets/icon-home.svg"
+                                    alt="home icon"
+                                    class="icon-grow"
+                                />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../../pages/projects.html">projects</a>
+                        </li>
+                        <li><a href="../../#about">me</a></li>
+                        <li><a href="../../#experience">experience</a></li>
+                        <li><a href="../../#contact">contact</a></li>
+                    </ul>
+                </div>
+            </nav>
 
-      <nav id="hamburger-nav">
-        <div class="logo">Andrew D. Leach</div>
-        <div class="hamburger-menu">
-          <div class="hamburger-icon" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div class="menu-links">
-            <li>
-              <a href="../../pages/projects.html" onclick="toggleMenu()"
-                >projects</a
-              >
-            </li>
-            <li><a href="../../#about" onclick="toggleMenu()">about</a></li>
-            <li>
-              <a href="../../#experience" onclick="toggleMenu()">experience</a>
-            </li>
-            <li><a href="../../#contact">contact</a></li>
-          </div>
-        </div>
-      </nav>
+            <nav id="hamburger-nav">
+                <div class="logo">Andrew D. Leach</div>
+                <div class="hamburger-menu">
+                    <div class="hamburger-icon" onclick="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="menu-links">
+                        <li>
+                            <a
+                                href="../../pages/projects.html"
+                                onclick="toggleMenu()"
+                                >projects</a
+                            >
+                        </li>
+                        <li>
+                            <a href="../../#about" onclick="toggleMenu()"
+                                >about</a
+                            >
+                        </li>
+                        <li>
+                            <a href="../../#experience" onclick="toggleMenu()"
+                                >experience</a
+                            >
+                        </li>
+                        <li><a href="../../#contact">contact</a></li>
+                    </div>
+                </div>
+            </nav>
 
-      <div class="project-sidebar">
-        <a href="#rasterization">Rasterization</a>
-        <a href="#triangles">The Cake Is a Lie</a>
-        <a href="#scenes">Scenes</a>
-        <a href="#favorite-scenes">Personal Favorites</a>
-        <a href="#credits">Thanks & Credits</a>
-      </div>
-
-      <section id="rasterization" class="project">
-        <h3 class="project-title">Rasterization</h3>
-
-        <p>
-          Almost every 3D game or application we've played was using
-          <strong>rasterization</strong> behind the scenes.
-        </p>
-
-        <p>
-          If a <strong>raster</strong> is a group of pixels on a 2D grid or
-          image, then <strong>rasterization</strong> is the process by which we
-          convert 3D shapes (composed of triangles) into pixels on your 2D
-          screen.
-        </p>
-
-        <p>Why compose objects of triangles though?</p>
-
-        <h2 id="triangles">The Cake Is a Lie</h2>
-
-        <div class="project-img-container">
-          <img
-            src="./assets/alltriangles.png"
-            alt="Wait, it's all triangles?"
-            class="project-img"
-            style="width: 85%; height: auto"
-          />
-        </div>
-
-        <p>
-          <a
-            href="https://en.wikipedia.org/wiki/The_cake_is_a_lie"
-            target="_blank"
-            >The cake is a lie</a
-          >. Everything you are looking at is composed of triangles. Take a look
-          at <a href="https://minecraft.net" target="_blank">Minecraft</a> for
-          example. A cube is 6 squares or faces, and one of those squares is
-          <strong>two triangles</strong>.
-        </p>
-
-        <p>
-          Even for more complex shapes, like a sphere, we can approximate it
-          with a bunch of triangles. The degree of precision necessary to
-          represent a mesh can then be described as <strong>low-poly</strong> or
-          <strong>high-poly</strong>.
-        </p>
-
-        <div class="project-img-container">
-          <img
-            src="./assets/cybertruck.png"
-            alt="Cybertruck"
-            class="project-img"
-            style="width: 75%; height: auto"
-          />
-          <div>Tesla Cybertruck (low-poly)</div>
-        </div>
-
-        <p>
-          Triangles require the least amount of points or coordinates to enclose
-          a 2D area, which makes them very simple. Also, they lie on a single
-          plane - making them play nice with math. And the GPU does
-          <strong>a lot of math</strong>. We want to minimize the overhead and
-          complexity of the calculations we do, to increase performance.
-        </p>
-
-        <p>
-          Of course, that is to say <strong>performance</strong> is
-          <em>usually</em> the goal, at least for real-time rendering in video
-          games or other contexts. Now, if creating perfect images and scenes
-          (prerendered) is your goal,
-          <a href="../raytracer/raytracer.html" target="_blank">ray tracing</a>
-          is your friend.
-        </p>
-
-        <h2 id="scenes">Scenes</h2>
-        <p>
-          Attached is my progression of a
-          <a href="https://en.wikipedia.org/wiki/Stanford_bunny" target="_blank"
-            >Stanford bunny</a
-          >
-          (bunny.obj) mesh from coordinate data to transformed image output:
-        </p>
-
-        <div class="project-img-group">
-          <div class="project-img-list">
-            <img
-              src="./assets/task1_bunny.png"
-              alt="Task 1 Bunny"
-              class="project-img-scene"
-            />
-            Bounding box area and randomized colors
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/task2_bunny.png"
-              alt="Task 2 Bunny"
-              class="project-img-scene"
-            />
-            Barycentric test to determine pixels inside/outside each triangle
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/task3_bunny.png"
-              alt="Task 3 Bunny"
-              class="project-img-scene"
-            />
-            Per-vertex color interpolation (based on barycentric coords)
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/task4_bunny.png"
-              alt="Task 4 Bunny"
-              class="project-img-scene"
-            />
-            Object (not image) linear interpolation with y value
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/task5_bunny.png"
-              alt="Task 5 Bunny"
-              class="project-img-scene"
-            />
-            Z-buffering to containerize depth and prevent overlap
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/task6_bunny.png"
-              alt="Task 6 Bunny"
-              class="project-img-scene"
-            />
-            Coloring with vertex normals
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/task7_bunny.png"
-              alt="Task 7 Bunny"
-              class="project-img-scene"
-            />
-            Lighting coloring w/ normals and light - \( max(\hat{l} \cdot
-            \hat{n}, 0) \)
-          </div>
-
-          <div class="project-img-list">
-            <img
-              src="./assets/task8_bunny.png"
-              alt="Task 8 Bunny"
-              class="project-img-scene"
-            />
-            Rotation
-          </div>
-        </div>
-
-        <h2 id="favorite-scenes">Personal Favorites</h2>
-        <div class="project-img-group">
-          <div class="project-img-list">
-            <img
-              src="./assets/rgb_shenron.png"
-              alt="RGB Shenron"
-              class="project-img-scene"
-            />
-            <div>
-              RGB Shenron (I did not create this,
-              <a href="https://than.gs/m/987921" target="_blank">here</a>)
+            <div class="project-sidebar">
+                <a href="#rasterization">Rasterization</a>
+                <a href="#triangles">The Cake Is a Lie</a>
+                <a href="#scenes">Scenes</a>
+                <a href="#favorite-scenes">Personal Favorites</a>
+                <a href="#credits">Thanks & Credits</a>
             </div>
-          </div>
 
-          <div class="project-img-list">
-            <img
-              src="./assets/shenron_rotated.png"
-              alt="Rotated Shenron"
-              class="project-img-scene"
-            />
-            Rotation
-          </div>
+            <section id="rasterization" class="project">
+                <h3 class="project-title">Rasterization</h3>
 
-          <div class="project-img-list">
-            <img
-              src="./assets/small_bunny.png"
-              alt="Small Bunny"
-              class="project-img-scene"
-            />
-            16x16 bunny (terraria reference?)
-          </div>
+                <p>
+                    Almost every 3D game or application we've played was using
+                    <strong>rasterization</strong> behind the scenes.
+                </p>
 
-          <div class="project-img-list">
-            <img
-              src="./assets/purple_bunny.png"
-              alt="bbb2e9 Bunny"
-              class="project-img-scene"
-            />
-            <div>4k bbb2e9 bunny</div>
-          </div>
+                <p>
+                    If a <strong>raster</strong> is a group of pixels on a 2D
+                    grid or image, then <strong>rasterization</strong> is the
+                    process by which we convert 3D shapes (composed of
+                    triangles) into pixels on your 2D screen.
+                </p>
 
-          <div class="project-img-list">
-            <img
-              src="./assets/evil_sphere.png"
-              alt="Evil sphere"
-              class="project-img-scene"
-            />
-            Evil sphere (artifact) caused from this bug:
-            <code style="width: max-content">
-              Color Color::operator+(const Color&amp; other) const {<br />&nbsp;&nbsp;return
-              Color(static_cast&lt;uint8_t&gt;(r + other.r),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static_cast&lt;uint8_t&gt;(g
-              + other.b),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static_cast&lt;uint8_t&gt;(b
-              + other.b));<br />}
-            </code>
-            It took 5 hours to find this one (look at r, g, b colors)!
-          </div>
-        </div>
+                <p>Why compose objects of triangles though?</p>
 
-        <h2>Future</h2>
-        <p>
-          I do not currently have any plans to modify any of my code or logic
-          for this project :)
-        </p>
-        <h2 id="credits">Thanks & Credits</h2>
-        <ol>
-          <li>
-            <a
-              href="https://people.engr.tamu.edu/sueda/index.html"
-              target="_blank"
-              >Dr. Shinjiro Sueda</a
-            >
-          </li>
-          <li>
-            CS441 (computer graphics) lecture slides, notes and project
-            directions.
-          </li>
-        </ol>
-      </section>
+                <h2 id="triangles">The Cake Is a Lie</h2>
 
-      <footer>
-        <nav>
-          <div class="nav-links-container">
-            <ul class="nav-links">
-              <li>
-                <a href="../../">
-                  <img
-                    src="../../assets/icon-home.svg"
-                    alt="home icon"
-                    class="icon-grow"
-                  />
-                </a>
-              </li>
-              <li><a href="../../pages/projects.html">projects</a></li>
-              <li><a href="../../#about">me</a></li>
-              <li><a href="../../#experience">experience</a></li>
-              <li><a href="../../#contact">contact</a></li>
-            </ul>
-          </div>
-        </nav>
-        <p>&#169; 2024 Andrew Leach. All Rights Reserved.</p>
-      </footer>
+                <div class="project-img-container">
+                    <img
+                        src="./assets/alltriangles.png"
+                        alt="Wait, it's all triangles?"
+                        class="project-img"
+                        style="width: 85%; height: auto"
+                    />
+                </div>
 
-      <script src="../../script.js" async defer></script>
-    </html>
-  </body>
+                <p>
+                    <a
+                        href="https://en.wikipedia.org/wiki/The_cake_is_a_lie"
+                        target="_blank"
+                        >The cake is a lie</a
+                    >. Everything you are looking at is composed of triangles.
+                    One childhood favorite you may be familiar with,
+                    <a href="https://minecraft.net" target="_blank">Minecraft</a
+                    >, composes its visuals by strapping textures onto triangles
+                    after they are rasterized. A cube is 6 squares or faces, and
+                    one of those squares is <strong>two triangles</strong>.
+                </p>
+
+                <p>
+                    Even for more complex shapes, like a sphere, we can
+                    approximate it with a bunch of triangles. The degree of
+                    precision necessary to represent a mesh can then be
+                    described as low-poly or high-poly.
+                </p>
+
+                <div class="project-img-container">
+                    <img
+                        src="./assets/cybertruck.png"
+                        alt="Cybertruck"
+                        class="project-img"
+                        style="width: 75%; height: auto"
+                    />
+                    <div>Tesla Cybertruck (low-poly example)</div>
+                </div>
+
+                <p>
+                    Triangles require the least amount of points or coordinates
+                    to enclose a 2D area, which makes them very simple. Also,
+                    they lie on a single plane - making them play nice with
+                    math. And the GPU does
+                    <strong>a lot of math</strong>. We want to minimize the
+                    overhead and complexity of the calculations we do, to
+                    increase performance.
+                </p>
+
+                <p>
+                    Of course, that is to say <strong>performance</strong> is
+                    <em>usually</em> the goal, at least for real-time rendering
+                    in video games or other contexts. Now, if creating perfect
+                    images and scenes (prerendered) is your goal,
+                    <a href="../raytracer/raytracer.html" target="_blank"
+                        >ray tracing</a
+                    >
+                    is your friend.
+                </p>
+
+                <h2 id="scenes">Scenes</h2>
+                <p>
+                    Attached is my progression of a
+                    <a
+                        href="https://en.wikipedia.org/wiki/Stanford_bunny"
+                        target="_blank"
+                        >Stanford bunny</a
+                    >
+                    (bunny.obj) mesh from coordinate data to transformed image
+                    output:
+                </p>
+
+                <div class="project-img-group">
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/task1_bunny.png"
+                            alt="Task 1 Bunny"
+                            class="project-img-scene"
+                        />
+                        Bounding box area and randomized colors
+                    </div>
+
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/task2_bunny.png"
+                            alt="Task 2 Bunny"
+                            class="project-img-scene"
+                        />
+                        Barycentric test to determine pixels inside/outside each
+                        triangle
+                    </div>
+
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/task3_bunny.png"
+                            alt="Task 3 Bunny"
+                            class="project-img-scene"
+                        />
+                        Per-vertex color interpolation (based on barycentric
+                        coords)
+                    </div>
+
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/task4_bunny.png"
+                            alt="Task 4 Bunny"
+                            class="project-img-scene"
+                        />
+                        Object (not image) linear interpolation with y value
+                    </div>
+
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/task5_bunny.png"
+                            alt="Task 5 Bunny"
+                            class="project-img-scene"
+                        />
+                        Z-buffering to containerize depth and prevent overlap
+                    </div>
+
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/task6_bunny.png"
+                            alt="Task 6 Bunny"
+                            class="project-img-scene"
+                        />
+                        Coloring with vertex normals
+                    </div>
+
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/task7_bunny.png"
+                            alt="Task 7 Bunny"
+                            class="project-img-scene"
+                        />
+                        Lighting coloring w/ normals and light - \( max(\hat{l}
+                        \cdot \hat{n}, 0) \)
+                    </div>
+
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/task8_bunny.png"
+                            alt="Task 8 Bunny"
+                            class="project-img-scene"
+                        />
+                        Rotation
+                    </div>
+                </div>
+
+                <h2 id="favorite-scenes">Personal Favorites</h2>
+                <div class="project-img-group">
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/rgb_shenron.png"
+                            alt="RGB Shenron"
+                            class="project-img-scene"
+                        />
+                        <div>
+                            RGB Shenron (I did not create this,
+                            <a href="https://than.gs/m/987921" target="_blank"
+                                >here</a
+                            >)
+                        </div>
+                    </div>
+
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/shenron_rotated.png"
+                            alt="Rotated Shenron"
+                            class="project-img-scene"
+                        />
+                        Rotation
+                    </div>
+
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/small_bunny.png"
+                            alt="Small Bunny"
+                            class="project-img-scene"
+                        />
+                        16x16 bunny (terraria reference?)
+                    </div>
+
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/purple_bunny.png"
+                            alt="bbb2e9 Bunny"
+                            class="project-img-scene"
+                        />
+                        <div>4k bbb2e9 bunny</div>
+                    </div>
+
+                    <div class="project-img-list">
+                        <img
+                            src="./assets/evil_sphere.png"
+                            alt="Evil sphere"
+                            class="project-img-scene"
+                        />
+                        Evil sphere (artifact) caused from this bug:
+                        <code style="width: max-content">
+                            Color Color::operator+(const Color&amp; other) const
+                            {<br />&nbsp;&nbsp;return
+                            Color(static_cast&lt;uint8_t&gt;(r + other.r),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static_cast&lt;uint8_t&gt;(g
+                            + other.b),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;static_cast&lt;uint8_t&gt;(b
+                            + other.b));<br />}
+                        </code>
+                        It took 5 hours to find this one (look at r, g, b
+                        colors)!
+                    </div>
+                </div>
+
+                <h2>Future</h2>
+                <p>
+                    I do not currently have any plans to modify any of my code
+                    or logic for this project :)
+                </p>
+                <h2 id="credits">Thanks & Credits</h2>
+                <ol>
+                    <li>
+                        <a
+                            href="https://people.engr.tamu.edu/sueda/index.html"
+                            target="_blank"
+                            >Dr. Shinjiro Sueda</a
+                        >
+                    </li>
+                    <li>
+                        CS441 (computer graphics) lecture slides, notes and
+                        project directions.
+                    </li>
+                </ol>
+            </section>
+
+            <footer>
+                <nav>
+                    <div class="nav-links-container">
+                        <ul class="nav-links">
+                            <li>
+                                <a href="../../">
+                                    <img
+                                        src="../../assets/icon-home.svg"
+                                        alt="home icon"
+                                        class="icon-grow"
+                                    />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../../pages/projects.html">projects</a>
+                            </li>
+                            <li><a href="../../#about">me</a></li>
+                            <li><a href="../../#experience">experience</a></li>
+                            <li><a href="../../#contact">contact</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <p>&#169; 2024 Andrew Leach. All Rights Reserved.</p>
+            </footer>
+
+            <script src="../../script.js" async defer></script>
+        </html>
+    </body>
 </html>
