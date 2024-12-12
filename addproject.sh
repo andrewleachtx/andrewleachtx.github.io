@@ -3,17 +3,17 @@
 # Prompt for project details
 echo "Enter the project title:"
 read title
-echo "Enter the project date (e.g., April 2024):"
+echo "Enter the project date (e.g., 'April 2024'):"
 read date
-echo "Enter the project timeframe (e.g., 1 month):"
+echo "Enter the project timeframe (e.g., '1 month'):"
 read timeframe
-echo "Enter the readtime (e.g., 5 minute read):"
+echo "Enter the readtime (e.g., '5 minute read', see https://thereadtime.com/):"
 read readtime
-echo "Enter the image file name (e.g., scene.png):"
+echo "Enter the image file name (e.g., 'scene.png' or 'scene.gif'):"
 read image
 echo "Enter the project description:"
 read desc
-echo "Pin this project? (true/false):"
+echo "Pin this project? ('true'/'false'):"
 read pinned
 echo "Enter the GitHub link (leave blank if no GitHub link):"
 read gh_link

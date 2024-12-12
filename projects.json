@@ -1,6 +1,16 @@
 {
   "projects": [
     {
+      "title": "Vertex Block Descent",
+      "date": "December 2024",
+      "timeframe": "3 weeks",
+      "readtime": "5 minute read",
+      "image": "../projects/vertex_block_descent/assets/beam_random_flat.gif",
+      "link": "https://github.com/andrewleachtx/vbd",
+      "desc": "My work in progress implementation of a couple scenes using logic from Chen's Vertex Block Descent paper.",
+      "pinned": true
+    },
+    {
       "title": "Particle Systems",
       "date": "September 2024",
       "timeframe": "25 hours",
