@@ -3,7 +3,7 @@
     {
       "title": "Vertex Block Descent",
       "date": "December 2024",
-      "timeframe": "3 weeks",
+      "timeframe": "24 hours",
       "readtime": "5 minute read",
       "image": "../projects/vertex_block_descent/assets/beam_random_flat.gif",
       "link": "https://github.com/andrewleachtx/vbd",
@@ -13,7 +13,7 @@
     {
       "title": "Particle Systems",
       "date": "September 2024",
-      "timeframe": "25 hours",
+      "timeframe": "20 hours",
       "readtime": "5 minute read",
       "image": "../projects/particle_systems/assets/scene.png",
       "link": "../projects/particle_systems/particle_systems.html",
