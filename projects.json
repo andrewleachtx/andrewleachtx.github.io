@@ -1,6 +1,16 @@
 {
   "projects": [
     {
+      "title": "MPI Parallel Sorts",
+      "date": "October 2024",
+      "timeframe": "12 hours",
+      "readtime": "N/A",
+      "image": "../projects/mpi_parallel_sorts/assets/bitonic.gif",
+      "link": "https://github.com/andrewleachtx/parallel-sorts/blob/main/bitonic/bitonic.cpp",
+      "desc": "Implemented bitonic sort with MPI parallelization, contributing to team project with multiple parallel sort implementations.",
+      "pinned": false
+    },
+    {
       "title": "Vertex Block Descent",
       "date": "December 2024",
       "timeframe": "24 hours",
