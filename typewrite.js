@@ -2,10 +2,8 @@
 
 const texts = [
   "Computer Graphics",
-  "Statistics",
-  "Manycore Fan",
+  "GPU / Manycore Fan",
   "Systems",
-  "Deep Learning"
 ];
 let currentTextIndex = 0;
 let currentCharIndex = 0;

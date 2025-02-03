@@ -1,13 +1,23 @@
 {
   "projects": [
     {
+      "title": "CUDAXPBD Rigid Body Simulator",
+      "date": "August 2024",
+      "timeframe": "Present",
+      "readtime": "",
+      "image": "../projects/cuda_xpbd/assets/scene.png",
+      "link": "https://github.com/andrewleachtx/cuda-xpbd",
+      "desc": "CUDA-enabled parallelized simulation framework for stacked rigid bodies. Supports execution of up to 10,000 unique environments simultaneously.",
+      "pinned": true
+    },
+    {
       "title": "MPI Parallel Sorts",
       "date": "October 2024",
-      "timeframe": "12 hours",
+      "timeframe": "8 hours",
       "readtime": "N/A",
       "image": "../projects/mpi_parallel_sorts/assets/bitonic.gif",
       "link": "https://github.com/andrewleachtx/parallel-sorts/blob/main/bitonic/bitonic.cpp",
-      "desc": "Implemented bitonic sort with MPI parallelization, contributing to team project with multiple parallel sort implementations.",
+      "desc": "Implemented bitonic sort with MPI parallelization, alongside team developing a few other parallelized sorts.",
       "pinned": false
     },
     {
@@ -17,7 +27,7 @@
       "readtime": "5 minute read",
       "image": "../projects/vertex_block_descent/assets/beam_random_flat.gif",
       "link": "https://github.com/andrewleachtx/vbd",
-      "desc": "My work in progress implementation of a couple scenes using logic from Chen's Vertex Block Descent paper.",
+      "desc": "From scratch work in progress implementation of Chen's Vertex Block Descent paper for parallelized finite element method simulation.",
       "pinned": true
     },
     {
@@ -27,7 +37,7 @@
       "readtime": "5 minute read",
       "image": "../projects/particle_systems/assets/scene.png",
       "link": "../projects/particle_systems/particle_systems.html",
-      "desc": "C++ physics simulation & OpenGL rendering of portal-like particles with multiple features. About 40 hours were invested to this project.",
+      "desc": "C++ physics simulation & OpenGL rendering of portal-like particles with multiple features.",
       "pinned": false
     },
     {
@@ -37,8 +47,8 @@
       "readtime": "10 minute read",
       "image": "../projects/cudasimulateworlds/assets/plot.png",
       "link": "https://github.com/andrewleachtx/cudasimulateworlds",
-      "desc": "GPU-parallelized simulation of k independent worlds with particle-particle collision checks. The goal is to maintain equal performance per world; weak scaling as world count increases.",
-      "pinned": true
+      "desc": "Achieved up to 4096 simultaneous worlds before hardware falloff. GPU-parallelized simulation of k independent worlds with particle-particle collision checks. The goal is a flat line; weak scaling as world count increases.",
+      "pinned": false
     },
     {
       "title": "cudapointcollisions",
@@ -47,7 +57,7 @@
       "readtime": "10 minute read",
       "image": "../projects/cudapointcollisions/assets/plots.png",
       "link": "https://github.com/andrewleachtx/cudapointcollisions",
-      "desc": "Maximizing particle count in GPU-parallelized (NVIDIA RTX 4090) physics simulation with 6 plane checks and basic forces while minimizing kernel time.",
+      "desc": "Peaked at about 50 million particles (threads) in one scene (with no collisions). Maximizing particle count in GPU-parallelized (NVIDIA RTX 4090) physics simulation with 6 plane checks and basic forces while minimizing kernel time.",
       "pinned": false
     },
     {
@@ -61,13 +71,13 @@
       "pinned": false
     },
     {
-      "title": "Ray Tracer",
+      "title": "CPU Multithreaded Ray Tracer",
       "date": "April 2024",
       "timeframe": "1 month",
       "readtime": "15 minute read",
       "image": "../projects/raytracer/assets/scene.png",
       "link": "../projects/raytracer/raytracer.html",
-      "desc": "C++ ray tracing engine (from scratch) featuring constructive solid geometry, anti-aliasing, multithreading, and 9 scenes.",
+      "desc": "C++ ray tracing engine (from scratch) featuring constructive solid geometry, anti-aliasing, multithreading, and 9 scenes. Achieved 90.97% speedup (see table).",
       "pinned": true
     },
     {
