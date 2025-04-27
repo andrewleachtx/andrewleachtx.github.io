@@ -47,12 +47,15 @@ a,
 
 /* WIP HEADER */
 #wip-nav {
-  background-color: var(--purple_);
+  background-color:rgb(255, 96, 215);
 
-  text-align: center;
-  max-height: 3vh;
+  height: 10vh;
   min-width: 100vw;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 10;
