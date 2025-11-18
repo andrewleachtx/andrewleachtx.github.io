@@ -49,9 +49,10 @@ a,
 #wip-nav {
   background-color:rgb(255, 96, 215);
 
-  height: 10vh;
+  height: 5vh;
+  min-height: 40px;
   min-width: 100vw;
-  font-size: 1.5rem;
+  font-size: 1rem;
   text-align: center;
   display: flex;
   justify-content: center;
